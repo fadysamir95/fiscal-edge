@@ -1,4 +1,6 @@
 [dir="rtl"] {
+    font-family: 'Cairo', sans-serif !important;
+
     .header-one .nav-area {
         margin-left: 80px;
     }
@@ -6,6 +8,14 @@
     .ml--20 {
         margin-right: 20px !important;
         margin-left: 0 !important;
+    }
+
+    .banner-seven-inner-content .pre-title {
+        font-size: 30px;
+    }
+
+    .banner-seven-inner-content .title {
+        font-family: 'Cairo', sans-serif !important;
     }
 
     .banner-style-one .banner-one-inner {

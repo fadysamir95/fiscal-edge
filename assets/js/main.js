@@ -58,11 +58,11 @@
       rtsJs.radialProgress();
     },
     rtlToggle: function () {
-
       $(document).ready(function () {
         // Retrieve the saved direction from localStorage
-        const savedDir = localStorage.getItem("pageDirection") || "ltr"; // Default to "ltr"
+        const savedDir = localStorage.getItem("pageDirection") || "rtl"; // Default to "rtl"
         $("body").attr("dir", savedDir);
+        translatePage(savedDir);
 
         // Update button visibility based on saved direction
         if (savedDir === "rtl") {
@@ -87,8 +87,30 @@
 
           // Save the new direction in localStorage
           localStorage.setItem("pageDirection", newDir);
+
+          translatePage(newDir);
         });
       });
+
+      function translatePage(dir) {
+        $("[data-key]").each(function () {
+          const key = $(this).data("key");
+          $(this).text(translations[dir][key]);
+        });
+      }
+
+      const translations = {
+        rtl: {
+          bannerTitle: "عزز ثقتك المالية",
+          bannerTitleLgTop: "نمو",
+          bannerTitleLgBottom: "الأعمال"
+        },
+        ltr: {
+          bannerTitle: "Build Your Financial Confidence",
+          bannerTitleLgTop: "Business",
+          bannerTitleLgBottom: "Growth"
+        }
+      };
 
     },
     preloader: function () {

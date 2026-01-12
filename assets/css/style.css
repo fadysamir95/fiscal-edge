@@ -23548,12 +23548,21 @@ body.contact-page .rts-breadcrumb-area .title-area-left {
   }
 }
 
+[dir=rtl] {
+  font-family: "Cairo", sans-serif !important;
+}
 [dir=rtl] .header-one .nav-area {
   margin-left: 80px;
 }
 [dir=rtl] .ml--20 {
   margin-right: 20px !important;
   margin-left: 0 !important;
+}
+[dir=rtl] .banner-seven-inner-content .pre-title {
+  font-size: 30px;
+}
+[dir=rtl] .banner-seven-inner-content .title {
+  font-family: "Cairo", sans-serif !important;
 }
 [dir=rtl] .banner-style-one .banner-one-inner {
   text-align: right !important;
