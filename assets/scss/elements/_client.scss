@@ -1,0 +1,131 @@
+.title-area-client-client {
+    position: relative;
+
+    p {
+        &.client-title {
+            max-width: max-content;
+            margin: auto;
+            font-weight: 700;
+            color: #1C2539;
+            text-transform: uppercase;
+        }
+    }
+
+    &.six {
+        &::after {
+            background: var(--color-primary);
+        }
+
+        &::before {
+            background: var(--color-primary);
+        }
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        width: 41%;
+        background: var(--color-primary);
+        display: flex;
+        align-items: center;
+        margin-top: -14px;
+
+        @media #{$smlg-device} {
+            width: 38%;
+        }
+
+        @media #{$md-layout} {
+            width: 35%;
+        }
+
+        @media #{$sm-layout} {
+            width: 30%;
+        }
+
+        @media #{$large-mobile} {
+            display: none;
+        }
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: 59%;
+        width: 100%;
+        height: 2px;
+        width: 41%;
+        background: var(--color-primary);
+        display: flex;
+        align-items: center;
+        margin-top: 15px;
+
+        @media #{$smlg-device} {
+            left: 62%;
+        }
+
+        @media #{$md-layout} {
+            left: 65%;
+            width: 35%;
+        }
+
+        @media #{$sm-layout} {
+            left: 69%;
+            width: 30%;
+        }
+
+        @media #{$large-mobile} {
+            display: none;
+        }
+    }
+}
+
+.client-wrapper-one {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    @media #{$laptop-device} {
+        justify-content: center;
+    }
+
+    @media #{$smlg-device} {
+        justify-content: center;
+    }
+
+    @media #{$sm-layout} {
+        position: relative;
+        z-index: 50;
+        gap: 15px;
+
+    }
+
+    a {
+        img {
+            transition: var(--transition);
+            max-width: 130px;
+
+            @media #{$laptop-device} {
+                margin-right: 10px;
+            }
+
+            @media #{$smlg-device} {
+                margin-right: 10px;
+                margin-bottom: 10px;
+            }
+
+            @media #{$small-mobile} {
+                max-width: 80px;
+            }
+        }
+
+        &:hover {
+            img {
+                transform: scale(1.1) translateY(-5px);
+            }
+        }
+    }
+}

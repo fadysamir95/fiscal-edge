@@ -1,0 +1,137 @@
+.bg_primary {
+    .title-style-five {
+        * {
+            color: #fff;
+        }
+    }
+}
+
+.large-thumbnail-career {
+    margin-top: -170px;
+    position: relative;
+    z-index: 2;
+
+    @media #{$large-mobile} {
+        margin-top: -120px;
+    }
+}
+
+.single-open-career {
+    padding: 36px 40px;
+    border-radius: 10px;
+    border: 1px solid #515B61;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    transition: .3s;
+
+    @media #{$mdsm-layout} {
+        flex-wrap: wrap;
+        gap: 25px;
+    }
+
+    &:hover {
+        background: #3E484E;
+        border-color: transparent;
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    .left-side {
+        flex-basis: 50%;
+
+        @media #{$mdsm-layout} {
+            flex-basis: 100%;
+        }
+
+        .title {
+            color: #fff;
+            position: relative;
+            max-width: max-content;
+            margin-bottom: 30px;
+
+            span {
+                position: absolute;
+                right: -58%;
+                top: -2px;
+                font-size: 12px;
+                font-weight: 500;
+                display: block;
+                padding: 13px 20px;
+                border-radius: 6px;
+                background: #404548;
+            }
+        }
+
+        .bottom {
+            display: flex;
+            align-items: center;
+            gap: 34px;
+
+            @media #{$large-mobile} {
+                flex-wrap: wrap;
+                gap: 25px;
+            }
+
+            .single {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+
+                i {
+                    color: #FFFFFF;
+                }
+
+                span {
+                    font-size: 18px;
+                    color: #8B8F99;
+                }
+            }
+        }
+    }
+
+    .right-side {
+        flex-basis: 50%;
+
+        @media #{$mdsm-layout} {
+            flex-basis: 100%;
+        }
+
+        .bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            @media #{$sm-layout} {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .single {
+                p {
+                    display: block;
+                    font-size: 18px;
+                    color: #fff;
+                    font-weight: 500;
+                    margin-bottom: 20px;
+                }
+
+                span {
+                    display: block;
+                    font-size: 18px;
+                    color: #8B8F99;
+                }
+            }
+        }
+    }
+
+
+
+}
+
+.rts-mission-image-page {
+    margin-top: -120px;
+}

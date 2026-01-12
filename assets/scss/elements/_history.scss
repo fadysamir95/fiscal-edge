@@ -1,0 +1,94 @@
+.company-history-main-wrapper {
+    height: 100%;
+
+    .single-company-history {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        background: #F6F6F6;
+        border-radius: 20px;
+        padding: 43px;
+        margin-bottom: 40px;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+        @media #{$large-mobile} {
+            padding: 22px;
+        }
+        &::after {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            content: '';
+            background-image: url(../images/appoinment/06.webp);
+            height: 100%;
+            width: 0%;
+            z-index: -1;
+            background-position: center;
+            background-size: cover;
+            border-radius: 20px;
+            transition: .3s;
+        }
+
+        &:hover {
+            &::after {
+                width: 100%;
+                left: 0;
+            }
+
+            .left {
+                .title {
+                    &::after {
+                        background: linear-gradient(90deg, #63686C 0%, #FFFFFF 100%);
+
+                    }
+                }
+            }
+
+            * {
+                color: #fff;
+            }
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        .left {
+            max-width: 525px;
+
+            .title {
+                position: relative;
+
+                &::after {
+                    content: '';
+                    right: -20px;
+                    top: 15px;
+                    position: absolute;
+                    width: 177px;
+                    height: 4px;
+                    background: linear-gradient(90deg, #F6F6F6 0%, #20282D 100%);
+                    border-radius: 6px;
+                    transition: all .3s;
+                    @media #{$laptop-device} {
+                        right: 20px;
+                    }
+                    @media #{$smlg-device} {
+                        display: none;
+                    }
+                    @media #{$sm-layout} {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        .right {
+            .title-year {
+                margin-bottom: 0;
+                min-width: max-content;
+            }
+        }
+    }
+}

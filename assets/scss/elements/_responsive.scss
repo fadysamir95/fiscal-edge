@@ -1,0 +1,63 @@
+
+@media(max-width:1600px){
+    
+}
+@media(max-width:1400px){
+    
+}
+@media(max-width:1400px) and (min-width:1200px){
+    
+}
+@media(max-width:1200px){
+    .rts-banner-area.investment .banner-one-inner .title{
+        font-size: 64px;
+    }
+    .table-area{
+        overflow-x: scroll;
+    }
+}
+@media(max-width:1200px) and (min-width:991px){
+}
+@media(max-width:991px){
+    .rts-banner-area.investment{
+        height: auto;
+        padding: 200px 0 100px;
+    }
+    .image-slider-area{
+        margin-top: 50px;
+    }
+    .rts-counter-area.investment .right-content{
+        margin-left: 0;
+        margin-top: 40px;
+    }
+}
+@media(max-width:991px) and (min-width:768px){
+
+}
+@media(max-width:768px){
+    .rts-banner-area.investment .banner-one-inner .title{
+        font-size: 48px;
+    }
+}
+@media(max-width:768px) and (min-width:576px){
+    
+}
+@media(max-width:576px){
+    .rts-banner-area.investment .banner-one-inner .title{
+        font-size: 36px;
+    }
+    .rts-counter-area.investment .counter-area .counter-inner{
+        padding: 50px 30px;
+    }
+    .rts-counter-area.investment .counter-area{
+        gap: 20px;
+    }
+}
+@media(max-width:576px) and (min-width:450px){
+
+}
+@media(max-width:450px){
+    .rts-banner-area.investment .banner-one-inner .title{
+        font-size: 30px;
+    }
+}

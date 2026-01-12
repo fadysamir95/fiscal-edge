@@ -1,0 +1,59 @@
+.h-100-vh {
+    height: 100vh;
+}
+
+// coming soon area start
+.coming-soon-wrapper-main {
+    text-align: center;
+
+    h3 {
+        font-size: 62px;
+        margin-bottom: 70px;
+        color: #141416;
+
+        @media #{$large-mobile} {
+            font-size: 44px;
+        }
+    }
+
+
+
+    .para {
+        font-size: 18px;
+        max-width: 40%;
+        margin: auto;
+        margin-top: 80px;
+        font-size: 22px;
+        line-height: 1.6;
+
+        @media #{$sm-layout} {
+            max-width: 95%;
+        }
+
+        @media #{$large-mobile} {
+            margin-top: 40px;
+            max-width: 98%;
+            font-size: 18px;
+        }
+    }
+
+    #countdown {
+        .timer-section {
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+
+            .time-unit {
+                span {
+                    font-size: 44px;
+                    color: var(--color-primary);
+
+                    @media #{$large-mobile} {
+                        font-size: 32px;
+                    }
+                }
+            }
+        }
+    }
+}

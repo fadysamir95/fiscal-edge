@@ -1,0 +1,89 @@
+.rts-btn {
+    height: 55px;
+    max-width: max-content;
+    padding: 13px 29px;
+    border: none;
+    box-shadow: none;
+    min-width: max-content;
+    border-radius: 15px;
+    transition: 800ms;
+    font-weight: 600;
+
+    @media #{$large-mobile} {
+        height: 47px;
+        padding: 13px 20px;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    &.btn-primary {
+        background: var(--color-primary);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+
+        &::before {
+            content: "";
+            position: absolute;
+            -webkit-transition-duration: 800ms;
+            transition-duration: 800ms;
+            width: 200%;
+            height: 200%;
+            top: 110%;
+            left: 50%;
+            background: #F2F2F2;
+            -webkit-transform: translateX(-50%);
+            -moz-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            -o-transform: translateX(-50%);
+            transform: translateX(-50%);
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -o-border-radius: 50%;
+            -ms-border-radius: 50%;
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        &:hover {
+            background: #F2F2F2;
+            color: var(--color-primary);
+
+            &::before {
+                top: -40%;
+            }
+        }
+
+        &.btn-white {
+            background: #F2F2F2;
+            color: #20282D;
+
+            &::before {
+                background: var(--color-primary);
+            }
+
+            &:hover {
+                background: var(--color-primary);
+                color: #F2F2F2;
+
+                &::before {
+                    top: -40%;
+                }
+            }
+        }
+    }
+
+    &.btn-border {
+        background: transparent;
+        border: 1px solid #E9ECF1;
+    }
+
+
+    &:focus {
+        border: none;
+        box-shadow: none;
+    }
+}

@@ -1,0 +1,133 @@
+.faq-bg-one {
+    background-image: url(../images/faq/bg.webp);
+}
+
+.faq-one-thumbnail-wrapper-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .thumbnail {
+        max-width: 520px;
+        clip-path: polygon(48.93% 0.356%, 48.93% 0.356%, 49.136% 0.264%, 49.349% 0.194%, 49.568% 0.143%, 49.791% 0.113%, 50.015% 0.103%, 50.24% 0.113%, 50.463% 0.143%, 50.681% 0.194%, 50.895% 0.264%, 51.101% 0.356%, 98.912% 24.359%, 98.912% 24.359%, 99.106% 24.469%, 99.283% 24.594%, 99.444% 24.734%, 99.586% 24.887%, 99.708% 25.052%, 99.811% 25.227%, 99.892% 25.411%, 99.951% 25.602%, 99.988% 25.798%, 100% 26%, 100% 74%, 100% 74%, 99.988% 74.202%, 99.951% 74.398%, 99.892% 74.589%, 99.811% 74.773%, 99.708% 74.948%, 99.586% 75.113%, 99.444% 75.266%, 99.283% 75.406%, 99.106% 75.531%, 98.912% 75.641%, 51.101% 99.645%, 51.101% 99.645%, 50.895% 99.736%, 50.681% 99.806%, 50.463% 99.857%, 50.24% 99.887%, 50.015% 99.897%, 49.791% 99.887%, 49.568% 99.857%, 49.349% 99.806%, 49.136% 99.736%, 48.93% 99.645%, 1.119% 75.641%, 1.119% 75.641%, 0.925% 75.531%, 0.747% 75.406%, 0.587% 75.266%, 0.445% 75.113%, 0.322% 74.948%, 0.22% 74.773%, 0.138% 74.589%, 0.079% 74.398%, 0.043% 74.202%, 0.031% 74%, 0.031% 26%, 0.031% 26%, 0.043% 25.798%, 0.079% 25.602%, 0.138% 25.411%, 0.22% 25.227%, 0.322% 25.052%, 0.445% 24.887%, 0.587% 24.734%, 0.747% 24.594%, 0.925% 24.469%, 1.119% 24.359%, 48.93% 0.356%);
+    }
+}
+
+.faq-main-wrapper-content-inner-four {
+    .title-style-four {
+        margin-right: -50px;
+
+        * {
+            color: #fff;
+        }
+    }
+
+    .accordion {
+        .accordion-item {
+            margin-bottom: 30px;
+            background: transparent;
+            border: 1px solid rgba(65, 72, 87, 1);
+            border-radius: 5px;
+
+            .accordion-button {
+                background: transparent;
+                font-size: 18px;
+                color: #fff;
+                padding: 18px 35px;
+                font-weight: 700;
+                border-bottom: none;
+                box-shadow: none !important;
+
+                &::after {
+                    filter: brightness(0) saturate(100%) invert(100%) sepia(66%) saturate(49%) hue-rotate(182deg) brightness(119%) contrast(100%);
+                }
+
+                &:focus {
+                    box-shadow: none;
+                }
+
+                &[aria-expanded="true"] {
+                    background: #fff;
+                    color: #1C2539;
+
+                    &::after {
+                        filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(7500%) hue-rotate(242deg) brightness(109%) contrast(108%);
+                    }
+                }
+            }
+
+            .accordion-collapse {
+                .accordion-body {
+                    transition: 0s;
+                    transition-delay: 0s;
+                    padding: 25px 30px 30px 30px;
+                    font-size: 16px;
+                    color: #5D666F;
+                }
+            }
+
+            .accordion-collapse.show {
+                .accordion-body {
+                    background: #fff;
+                }
+            }
+
+            .accordion-collapse.collapsing {
+                .accordion-body {
+                    background: #fff;
+                }
+            }
+        }
+
+    }
+}
+
+.faq-wrapper-inner-page {
+    .accordion-item {
+        margin-bottom: 30px;
+        background: #F2F2F2;
+        border: 1px solid #E3E0E6;
+        box-shadow: 0px 7px 18px rgba(24, 16, 16, 0.05);
+        border-radius: 6px;
+        @media #{$large-mobile} {
+            margin: 0 15px;
+            margin-bottom: 30px;
+        }
+        .accordion-header {
+            border: none;
+            box-shadow: none;
+
+            button {
+                padding: 24px 40px;
+                border: none;
+                box-shadow: none;
+                font-size: 18px;
+                color: #1C2539;
+                background: transparent;
+                font-weight: 700;
+                @media #{$sm-layout} {
+                    padding: 24px 15px;
+                }
+                &::after {
+                    content: '\f078';
+                    font-family: var(--font-3);
+                    background-image: none;
+                    transform: none;
+                    margin-top: -5px;
+                }
+                &[aria-expanded="true"]{
+                    &::after {
+                        content: '\f077';
+                    }
+                }
+            }
+        }
+
+        .accordion-body {
+            padding: 0 20px 20px 40px;
+            @media #{$sm-layout} {
+                padding: 0 20px 20px 20px;
+            }
+        }
+    }
+}

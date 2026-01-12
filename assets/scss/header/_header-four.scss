@@ -1,0 +1,35 @@
+.top-transparent-header {
+    .header-top-area-wrapper {
+        background: transparent;
+        border-bottom: 1px solid #EDEDED;
+
+        * {
+            color: #1C2539 !important;
+        }
+
+        .header-top-one-wrapper {
+            .right {
+                p {
+                    margin: 0;
+                    color: #5D666F;
+
+                    a {
+                        font-weight: 600;
+                        color: var(--color-primary) !important;
+                        i{
+                            color: var(--color-primary) !important;
+                        }
+                    }
+                }
+            }
+            .left{
+                a{
+                    font-weight: 600;
+                    &:hover{
+                        color: var(--color-primary) !important;
+                    }
+                }
+            }
+        }
+    }
+}
