@@ -54,7 +54,7 @@ section.main-wrapper-sticky {
 
                 i {
 
-                    color: #1C2539;
+                    color: #201F50;
                 }
             }
         }
@@ -123,7 +123,7 @@ section.main-wrapper-sticky {
             .arrow {
                 height: 62px;
                 width: 62px;
-                background: #20282D;
+                background: #201F50;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -184,7 +184,7 @@ section.main-wrapper-sticky {
             display: flex;
             align-items: center;
             gap: 9px;
-            color: #1C2539;
+            color: #201F50;
 
             i {
                 height: 40px;
@@ -194,7 +194,7 @@ section.main-wrapper-sticky {
                 justify-content: center;
                 background: #fff;
                 border-radius: 50%;
-                color: #1C2539;
+                color: #201F50;
                 box-shadow: 0px 9px 18px rgba(24, 16, 16, 0.05);
 
             }
@@ -216,7 +216,7 @@ section.main-wrapper-sticky {
 
             .arrow-right {
                 i {
-                    background: #20282D;
+                    background: #201F50;
                     color: #fff;
                 }
             }
@@ -276,7 +276,7 @@ section.main-wrapper-sticky {
         .title {
             font-size: 22px;
             font-weight: 700;
-            color: #1C2539;
+            color: #201F50;
             margin-bottom: 17px;
         }
 
@@ -434,7 +434,7 @@ section.main-wrapper-sticky {
         border-radius: 10px;
         font-weight: 700;
         font-size: 30px;
-        color: #20282D;
+        color: #201F50;
     }
 
     .inner-content {
@@ -483,7 +483,7 @@ section.main-wrapper-sticky .sticky-statement.narrow {
     justify-content: space-between;
     padding: 28px 30px;
     border-radius: 50px;
-    background: #20282D;
+    background: #201F50;
     position: relative;
 
     @media #{$md-layout} {
@@ -928,7 +928,7 @@ br {
 
 
 .rts-single-wized {
-    background: #20282D;
+    background: #201F50;
     border-radius: 15px;
     padding: 40px;
     margin-bottom: 40px;
@@ -954,7 +954,7 @@ br {
     }
 
     &.download {
-        background: #1C2539;
+        background: #201F50;
 
         .title {
             color: #fff;
@@ -1004,7 +1004,7 @@ br {
     }
 
     &.contact {
-        background: #1C2539;
+        background: #201F50;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -1175,7 +1175,7 @@ br {
                 margin-bottom: 0;
                 font-size: 16px;
                 font-weight: 600;
-                color: #1C2539;
+                color: #201F50;
                 line-height: 26px;
                 margin-top: 5px;
                 transition: .3s;
@@ -1268,7 +1268,7 @@ br {
             border-radius: 5px;
             margin-right: 10px;
             margin-bottom: 10px;
-            color: #1C2539;
+            color: #201F50;
             font-size: 14px;
             font-weight: 500;
             transition: .3s;
@@ -1324,7 +1324,7 @@ br {
 
         .title {
             font-size: 48px;
-            color: #1C2539;
+            color: #201F50;
             margin-bottom: 0;
 
             @media #{$sm-layout} {
@@ -1339,7 +1339,7 @@ br {
 
     .rts-btn {
         border: 1px solid #999999;
-        color: #1C2539;
+        color: #201F50;
 
         &::before {
             background: var(--color-primary);
@@ -1450,7 +1450,7 @@ br {
 }
 
 .bg_color-dark-1 {
-    background: #20282D;
+    background: #201F50;
     position: relative;
     z-index: 1;
 

@@ -611,7 +611,7 @@
           slidesPerGroup: 1,
           loop: true,
           centeredSlides: false,
-          speed: 1000,
+          speed: 3000,
           pagination: {
             el: ".swiper-pagination",
             clickable: true

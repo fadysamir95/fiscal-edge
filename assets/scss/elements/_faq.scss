@@ -48,7 +48,7 @@
 
                 &[aria-expanded="true"] {
                     background: #fff;
-                    color: #1C2539;
+                    color: #201F50;
 
                     &::after {
                         filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(7500%) hue-rotate(242deg) brightness(109%) contrast(108%);
@@ -102,7 +102,7 @@
                 border: none;
                 box-shadow: none;
                 font-size: 18px;
-                color: #1C2539;
+                color: #201F50;
                 background: transparent;
                 font-weight: 700;
                 @media #{$sm-layout} {

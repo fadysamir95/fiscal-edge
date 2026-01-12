@@ -13,7 +13,7 @@
         z-index: 999;
         width: 100%;
         box-shadow: 0px 7px 18px rgba(24, 16, 16, 0.0509803922);
-        background: #20282d;
+        background: #201F50;
     }
 }
 
@@ -21,6 +21,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    a {
+        img {
+            max-height: 60px;
+        }
+    }
 
     .main-nav>a {
         color: #fff !important;

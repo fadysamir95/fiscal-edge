@@ -24,7 +24,7 @@
     p {
         display: flex;
         align-items: center;
-        color: #20282D;
+        color: #201F50;
         font-weight: 500;
         font-size: 16px;
         margin-bottom: 25px;
@@ -125,7 +125,7 @@
             .title {
                 margin-top: 15px;
                 transition: .3s;
-                color: #1C2539;
+                color: #201F50;
                 font-weight: 700;
                 line-height: 40px;
 
@@ -149,7 +149,7 @@
         }
 
         .rts-read-more {
-            color: #1C2539;
+            color: #201F50;
 
             &:hover {
                 i {
@@ -170,7 +170,7 @@
 
 .rts-read-more {
     font-weight: 600;
-    color: #1C2539;
+    color: #201F50;
     transition: var(--transition);
 
     i {
@@ -178,7 +178,7 @@
         background: #fff;
         border-radius: 50%;
         margin-right: 12px;
-        color: #1C2539;
+        color: #201F50;
         line-height: 12px;
         font-size: 14px;
         transition: var(--transition);
@@ -187,7 +187,7 @@
 
     &.btn-primary {
         background: transparent;
-        color: #1C2539;
+        color: #201F50;
     }
 
     &:hover {
@@ -345,7 +345,7 @@
         p.top {
             margin-bottom: 10px;
             text-transform: uppercase;
-            color: #20282D;
+            color: #201F50;
             font-weight: 600;
 
             span {
@@ -356,7 +356,7 @@
 
         .title {
             font-size: 24px;
-            color: #1C2539;
+            color: #201F50;
             margin-bottom: 20px;
             transition: .3s;
             @media(max-width:576px){
@@ -501,7 +501,7 @@
                 font-size: 14px;
                 font-weight: 500;
                 border-radius: 5px;
-                color: #1C2539;
+                color: #201F50;
                 transition: .3s;
 
                 &:last-child {
@@ -544,7 +544,7 @@
                 position: relative;
                 z-index: 1;
                 margin-left: 23px;
-                color: #1C2539;
+                color: #201F50;
                 transition: .3s;
                 font-size: 14px;
 
@@ -899,7 +899,7 @@
         font-size: 14px;
         font-weight: 500;
         border-radius: 5px;
-        color: #1C2539;
+        color: #201F50;
         transition: .3s;
 
         &:last-child {
@@ -942,7 +942,7 @@
         position: relative;
         z-index: 1;
         margin-left: 23px;
-        color: #1C2539;
+        color: #201F50;
         transition: .3s;
         font-size: 14px;
 

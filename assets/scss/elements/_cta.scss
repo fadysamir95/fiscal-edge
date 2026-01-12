@@ -1,7 +1,7 @@
 .cta-main-area-wrapper-one {
     background-image: url(../images/cta/01.webp);
     height: 175px;
-    background-color: #20282D;
+    background-color: #201F50;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -218,7 +218,7 @@
 
                 i {
                     font-size: 22px;
-                    color: #20282D;
+                    color: #201F50;
                 }
             }
 
@@ -274,7 +274,7 @@
                 margin: 0;
                 line-height: 1.5;
                 text-transform: uppercase;
-                -webkit-text-stroke-color: #1C2539;
+                -webkit-text-stroke-color: #201F50;
                 -webkit-text-stroke: 1px;
 
                 @media #{$mdsm-layout} {
@@ -283,7 +283,7 @@
 
 
                 span {
-                    -webkit-text-stroke-color: #1C2539;
+                    -webkit-text-stroke-color: #201F50;
                     -webkit-text-stroke: 1px;
                     -webkit-text-fill-color: transparent;
                     letter-spacing: 3px;
@@ -373,7 +373,7 @@
 
         .title {
             font-size: 60px;
-            color: #1C2539;
+            color: #201F50;
 
             @media #{$smlg-device} {
                 font-size: 32px;

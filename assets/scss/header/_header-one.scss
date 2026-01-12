@@ -1,5 +1,5 @@
 .header-top-area-wrapper {
-    background: #20282D;
+    background: #201F50;
 
     @media #{$md-layout} {
         display: none;
@@ -165,7 +165,7 @@
     .thumbnail {
         a {
             img {
-                max-width: 79px;
+                max-width: 60px;
                 @media #{$large-mobile} {
                     max-width: 70px;
                 }
@@ -218,7 +218,7 @@
     border: none;
 
     i {
-        color: #1C2539;
+        color: #201F50;
         font-size: 18px;
     }
 }

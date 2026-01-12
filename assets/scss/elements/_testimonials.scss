@@ -8,7 +8,7 @@
     display: flex;
     align-items: center;
     gap: 30px;
-    background: #20282D;
+    background: #201F50;
     border-radius: 20px;
     overflow: hidden;
 
@@ -200,7 +200,7 @@
 
             .title {
                 font-size: 22px;
-                color: #1C2539;
+                color: #201F50;
                 margin-bottom: 13px;
             }
 
@@ -307,7 +307,7 @@
 
                     span {
                         font-weight: 600;
-                        color: #20282D;
+                        color: #201F50;
                     }
                 }
             }
@@ -397,7 +397,7 @@
         .botton-user {
             .title {
                 font-size: 22px;
-                color: #1C2539;
+                color: #201F50;
                 margin-bottom: 10px;
             }
 
@@ -427,7 +427,7 @@
         }
 
         i {
-            color: #1C2539;
+            color: #201F50;
         }
 
         &::after {
@@ -526,7 +526,7 @@
         }
 
         i {
-            color: #1C2539;
+            color: #201F50;
             transition: .3s;
         }
 
@@ -669,7 +669,7 @@
         justify-content: center;
 
         i {
-            color: #1C2539;
+            color: #201F50;
         }
 
         &::after {

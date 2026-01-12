@@ -23,7 +23,7 @@
 
     .progress {
         height: 40px;
-        background: linear-gradient(90deg, #20282d29 0%, #f2f2f205 100%);
+        background: linear-gradient(90deg, #201F5029 0%, #f2f2f205 100%);
         opacity: 1;
         border-radius: 40px;
         background-color: transparent;
@@ -191,7 +191,7 @@
             align-items: center;
             gap: 30px;
             position: relative;
-            background: #20282D;
+            background: #201F50;
             padding: 20px 42px;
             border-radius: 10px;
             @media #{$large-mobile} {
