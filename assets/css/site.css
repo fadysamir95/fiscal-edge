@@ -340,6 +340,45 @@ select:focus-visible,
   overflow: hidden;
 }
 
+/* ==========================================================================
+   Footer (footer-two/footer-three) — fixes & brand polish
+
+   The template ships two regressions on the light footer:
+   1. `.footer-two-single-wized.right` gets `margin-top: 77px`, which drops
+      the "Contact Us" widget below the other columns.
+   2. Widget headings inherit the ORANGE `--color-heading-1` token (#f39e1e);
+      on the grey footer texture (02.webp is a 60x3px #D9D9D9 strip stretched
+      to "cover") that reads at ~1.5:1 contrast — effectively invisible.
+   ========================================================================== */
+
+/* Keep every footer column on the same baseline (remove the 77px offset) */
+.footer-two-single-wized.right {
+  margin-top: 0;
+}
+
+/* Deliberate light background instead of the stretched 3px pattern */
+.rts-footer-area.footer-bg-two {
+  background-color: #F6F6FB;
+  background-image: none;
+}
+
+/* Hairline above the copyright bar */
+.rts-copy-right-1 {
+  border-top: 1px solid #E6E3F7;
+}
+
+/* Readable widget headings ("Our Services" / "Company" / "Contact Us") */
+.rts-footer-area .footer-two-single-wized .wized-title {
+  color: #201F50;
+  font-weight: 700;
+}
+
+/* Footer link hover accent — the template references `--color-primary-2`
+   but never declares it, so footer hovers silently did nothing */
+:root {
+  --color-primary-2: #d9860a;
+}
+
 /* --- Reduced motion --- */
 @media (prefers-reduced-motion: reduce) {
   *,
