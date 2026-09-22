@@ -35,7 +35,6 @@
         this._html = $('html')
     },
     methods: function (e) {
-      rtsJs.rtlToggle();
       rtsJs.preloader();
       rtsJs.smoothScroll();
       rtsJs.countDown();
@@ -56,62 +55,6 @@
       rtsJs.galleryPopUpmag();
       rtsJs.gsapAnimationImageScale();
       rtsJs.radialProgress();
-    },
-    rtlToggle: function () {
-      $(document).ready(function () {
-        // Retrieve the saved direction from localStorage
-        const savedDir = localStorage.getItem("pageDirection") || "rtl"; // Default to "rtl"
-        $("body").attr("dir", savedDir);
-        translatePage(savedDir);
-
-        // Update button visibility based on saved direction
-        if (savedDir === "rtl") {
-          $(".rtl").removeClass("show");
-          $(".ltr").addClass("show");
-        } else {
-          $(".rtl").addClass("show");
-          $(".ltr").removeClass("show");
-        }
-
-        // Toggle direction and save state on button click
-        $(".rtl-ltr-switcher-btn").on("click", function () {
-          const currentDir = $("body").attr("dir");
-          const newDir = currentDir === "rtl" ? "ltr" : "rtl";
-
-          // Update body direction
-          $("body").attr("dir", newDir);
-
-          // Toggle button visibility
-          $(".rtl").toggleClass("show");
-          $(".ltr").toggleClass("show");
-
-          // Save the new direction in localStorage
-          localStorage.setItem("pageDirection", newDir);
-
-          translatePage(newDir);
-        });
-      });
-
-      function translatePage(dir) {
-        $("[data-key]").each(function () {
-          const key = $(this).data("key");
-          $(this).text(translations[dir][key]);
-        });
-      }
-
-      const translations = {
-        rtl: {
-          bannerTitle: "عزز ثقتك المالية",
-          bannerTitleLgTop: "نمو",
-          bannerTitleLgBottom: "الأعمال"
-        },
-        ltr: {
-          bannerTitle: "Build Your Financial Confidence",
-          bannerTitleLgTop: "Business",
-          bannerTitleLgBottom: "Growth"
-        }
-      };
-
     },
     preloader: function () {
       window.addEventListener('load', function () {
