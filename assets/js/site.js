@@ -255,5 +255,35 @@
     initYear();
     initContactForm();
     initReducedMotion();
+    initPreloaderCounter();
   });
+
+  /* Finance-style preloader: count 0 -> 100% and keep the branded
+     loader on screen for a minimum time, then hide it once the page
+     has finished loading too. */
+  function initPreloaderCounter() {
+    var counter = document.querySelector('.fpe-loader-percent');
+    if (!counter) return;
+    var body = document.body;
+    var start = null;
+    var DURATION = 1400;
+    var finished = false;
+    var loadFired = false;
+    window.addEventListener('load', function () {
+      loadFired = true;
+      if (finished) body.classList.add('loaded');
+    });
+    function tick(timestamp) {
+      if (start === null) start = timestamp;
+      var progress = Math.min(100, Math.round(((timestamp - start) / DURATION) * 100));
+      counter.textContent = progress;
+      if (progress >= 100) {
+        finished = true;
+        if (loadFired) body.classList.add('loaded');
+        return;
+      }
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
 })();

@@ -57,9 +57,8 @@
       rtsJs.radialProgress();
     },
     preloader: function () {
-      window.addEventListener('load', function () {
-        document.querySelector('body').classList.add("loaded")
-      });
+      // Preloader exit is orchestrated from site.js (minimum display
+      // time + window load) so the branded loader is actually visible.
     },
     smoothScroll: function (e) {
       $(document).on('click', '.onepage a[href^="#"]', function (event) {

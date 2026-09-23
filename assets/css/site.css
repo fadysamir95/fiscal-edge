@@ -855,6 +855,79 @@ select:focus-visible,
   margin: 0 auto;
 }
 
+/* --- Preloader: finance-style loader on the navy brand colour —
+   rotating hexagon ring (matches the brand shape) around the white
+   logo, with a 0 -> 100% counter and a tagline. --- */
+.loader-wrapper {
+  background: #103d67;
+}
+.loader-wrapper .loader-section {
+  background: #103d67;
+}
+.fpe-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  text-align: center;
+}
+.fpe-loader::after {
+  display: none;
+}
+.fpe-loader-hex {
+  position: relative;
+  width: 118px;
+  height: 118px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fpe-loader-hex::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 3px solid rgba(41, 135, 142, 0.22);
+  border-top-color: #29878e;
+  border-bottom-color: #29878e;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  animation: fpe-loader-spin 1.8s linear infinite;
+}
+.fpe-loader-logo {
+  width: 88px;
+  height: 88px;
+  object-fit: contain;
+}
+.fpe-loader-count {
+  margin-top: 16px;
+  font-family: "Red Hat Display", serif;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 1px;
+  color: #ffffff;
+}
+.fpe-loader-pct {
+  color: #55b6bc;
+}
+.fpe-loader-note {
+  margin: 8px 0 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+@keyframes fpe-loader-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 /* --- Reduced motion --- */
 @media (prefers-reduced-motion: reduce) {
   *,
