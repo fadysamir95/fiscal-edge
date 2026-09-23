@@ -1,6 +1,6 @@
 /* ==========================================================================
    Fiscal Edge — site-level scripts
-   - Contact form validation + submission (Formspree endpoint with
+   - Contact form validation + submission (FormSubmit endpoint with
      WhatsApp/mailto fallback for deployments without a form backend)
    - In-page anchor smooth scrolling (reduced-motion aware)
    - Auto-updating copyright year
@@ -50,6 +50,31 @@
   /* --- Contact form --- */
   function postForm(form, data) {
     var endpoint = form.getAttribute('action') || '';
+    var ajaxEndpoint = form.getAttribute('data-ajax-endpoint') || '';
+
+    /* FormSubmit configured (action URL contains the delivery inbox):
+       send as JSON so the visitor stays on the page. */
+    if (ajaxEndpoint) {
+      return fetch(ajaxEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: 'Inquiry via fiscal-edge.org — ' + data.name,
+          name: data.name,
+          company: data.company,
+          email: data.email,
+          phone: data.phone,
+          service: data.service,
+          message: data.message
+        })
+      }).then(function (res) {
+        return res.json().then(function (j) {
+          if (res.ok && String(j.success) === 'true') return { ok: true };
+          var msg = (j && j.message) || ('Submission failed (status ' + res.status + ')');
+          throw new Error(msg);
+        });
+      });
+    }
 
     /* Formspree configured: send via fetch (progressive enhancement — the
        native action also works if JS fails). */
@@ -84,7 +109,7 @@
     ];
     var body = encodeURIComponent(bodyLines.filter(function (l) { return l !== ''; }).join('\n'));
     var waUrl = 'https://wa.me/' + whatsapp + '?text=' + body;
-    var mailUrl = 'mailto:info@fiscal-edge.org?subject=' + subject + '&body=' + body;
+    var mailUrl = 'mailto:contact@fiscal-edge.org?subject=' + subject + '&body=' + body;
 
     window.open(waUrl, '_blank', 'noopener');
     return Promise.resolve({ ok: true, fallback: true, mailUrl: mailUrl });
@@ -163,7 +188,7 @@
             messages.innerHTML = '<strong>Thank you, ' + escapeHtml(data.name.split(' ')[0]) + '.</strong> ' +
               'Your inquiry has been prepared — a WhatsApp message should open. ' +
               'If it didn\u2019t, email us directly at ' +
-              '<a href="' + res.mailUrl + '">info@fiscal-edge.org</a>.';
+              '<a href="' + res.mailUrl + '">contact@fiscal-edge.org</a>.';
           } else {
             messages.innerHTML = '<strong>Thank you, ' + escapeHtml(data.name.split(' ')[0]) + '.</strong> ' +
               'Your inquiry has been sent — we will get back to you as soon as possible.';
@@ -173,7 +198,7 @@
         if (messages) {
           messages.className = 'form-messages error';
           messages.textContent = 'Sorry, we couldn\u2019t send your message: ' + err.message +
-            '. Please email us directly at info@fiscal-edge.org.';
+            '. Please email us directly at contact@fiscal-edge.org.';
         }
       }).finally(function () {
         if (btn) { btn.disabled = false; btn.textContent = btnText; }
