@@ -244,20 +244,37 @@ select:focus-visible,
   height: 100%;
   object-fit: cover;
 }
-@media only screen and (max-width: 575px) {
-  .thumbnail-about-right-4 .small-image {
-    left: 6px;
-  }
-}
 .thumbnail-about-right-4 .large-iamge {
   max-width: 432px;
   margin-left: auto;
 }
+.thumbnail-about-right-4 .large-iamge img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+@media only screen and (max-width: 575px) {
+  /* On phones the three-element collage (big hexagon + small photo +
+     navy frame) gets crowded and looks broken; keep just a clean,
+     centered hexagon photo. */
+  .thumbnail-about-right-4 .small-image,
+  .thumbnail-about-right-4 .poligon-shape {
+    display: none;
+  }
+  .thumbnail-about-right-4 .large-iamge {
+    max-width: 320px;
+    margin: 15px auto;
+  }
+}
 
-/* --- About "Who We Are" thumbnail: the navy counter card is a bit
-   smaller than the template default (all other template styles kept) --- */
-.left-thumbnail-about-area-two .counter-about-area {
-  padding: 28px 24px;
+/* --- About / Career "Who We Are" thumbnail: the navy counter card was
+   removed from the page; keep the main photo filling its frame (the
+   template leaves it at natural size, which overflows on small
+   screens). --- */
+.left-thumbnail-about-area-two > img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 /* --- Home CTA banner: keep the photo compact so the heading gets
@@ -368,7 +385,11 @@ select:focus-visible,
   border-radius: 10px;
 }
 
-/* --- Services page: full-width alternating service rows --- */
+/* --- Services page: full-width alternating service rows.
+   The template splits each row 50/50 and only stacks below 767px,
+   which lets the natural-size image overflow and squeeze the text.
+   We stack the whole row on tablets too and let the thumbnail
+   never exceed its share, so content can't overlap. --- */
 .rts-service-main-wrapper-10 .signle-service-style-10 {
   flex-basis: 100%;
   scroll-margin-top: 130px;
@@ -376,21 +397,131 @@ select:focus-visible,
 .rts-service-main-wrapper-10 .signle-service-style-10 .thumbnail {
   flex: 0 0 50%;
   width: 50%;
+  min-width: 0;
 }
 .rts-service-main-wrapper-10 .signle-service-style-10 .thumbnail img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-@media only screen and (max-width: 767px) {
+/* Icon SVGs in the source folder vary in size (68px and 28-37px);
+   render them all at one consistent size, centered. */
+.rts-service-main-wrapper-10 .signle-service-style-10 .content-area-wrapper .icon img {
+  width: 68px;
+  height: 68px;
+  object-fit: contain;
+}
+@media only screen and (max-width: 991px) {
+  .rts-service-main-wrapper-10 .signle-service-style-10 {
+    flex-direction: column;
+    align-items: stretch;
+  }
   .rts-service-main-wrapper-10 .signle-service-style-10 .thumbnail,
   .rts-service-main-wrapper-10 .signle-service-style-10 .content-area-wrapper {
-    flex: 0 0 100%;
+    flex: 0 0 auto;
     width: 100%;
+    max-width: 100%;
   }
   .rts-service-main-wrapper-10 .signle-service-style-10 .thumbnail img {
     height: auto;
   }
+  .rts-service-main-wrapper-10 .signle-service-style-10 .content-area-wrapper {
+    padding: 30px 24px;
+  }
+}
+@media only screen and (max-width: 575px) {
+  .rts-service-main-wrapper-10 .signle-service-style-10 .content-area-wrapper {
+    padding: 22px 18px;
+  }
+}
+
+/* --- Home "Our Core Services": the template renders the card SVGs at
+   natural size (89x87) with no centering box. Normalize them so every
+   icon sits in the same centered 80px box, and compact the overlay on
+   phones so it never crowds the card's bottom edge. --- */
+.single-why-choose-four .inner-content .icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.single-why-choose-four .inner-content .icon img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+@media only screen and (max-width: 575px) {
+  .single-why-choose-four .inner-content {
+    bottom: 16px;
+    padding: 0 12px;
+  }
+  .single-why-choose-four .inner-content .icon {
+    margin-bottom: 12px;
+  }
+  .single-why-choose-four .inner-content .icon img {
+    width: 60px;
+    height: 60px;
+  }
+  .single-why-choose-four .inner-content .title {
+    font-size: 20px;
+  }
+  .single-why-choose-four .inner-content p.disc {
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+}
+
+/* --- Home "Why Fiscal Edge": keep the navy stat card balanced on the
+   hexagon and the feature icons tidy on phones. --- */
+@media only screen and (max-width: 575px) {
+  .business-solution-area-left-thumbnail .success-rate-area {
+    width: 148px;
+    height: 168px;
+    right: 10px;
+    top: 24px;
+  }
+  .business-solution-area-left-thumbnail .success-rate-area .inner .icon {
+    font-size: 32px;
+  }
+  .business-solution-area-left-thumbnail .success-rate-area .inner .title {
+    font-size: 34px;
+  }
+  .business-solution-area-right-content .featuremain-wrapper .single-feature-wrapper {
+    padding: 24px 16px 24px 74px;
+  }
+  .business-solution-area-right-content .featuremain-wrapper .single-feature-wrapper img {
+    width: 52px;
+    height: 52px;
+    left: 12px;
+    object-fit: contain;
+  }
+}
+
+/* --- About "Our Approach": the small animated thumbnail was removed
+   from the page; the large photo fills its frame and stays centered
+   on small screens (the template's img has no width rule, so it
+   rendered at natural size). --- */
+.business-goal-area-2 .thumbnail-business-area-right-two .large-thumbnail img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+@media only screen and (max-width: 767px) {
+  .business-goal-area-2 .thumbnail-business-area-right-two .large-thumbnail {
+    max-width: 100%;
+    margin: 30px auto 0;
+  }
+}
+
+/* --- Mega menu service icons: source SVGs vary in size (68px vs
+   28-37px); the template only caps the width, so give them a uniform
+   box for a consistent row. --- */
+.rts-mega-menu.service-mega-menu-style li a .single-service-menu .icon img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
 }
 
 /* --- Legal pages: reading-friendly content columns --- */
@@ -646,7 +777,6 @@ select:focus-visible,
    define it as the brand navy so headings/citations render correctly. */
 :root {
   --color-heading: #103d67;
-}
 }
 
 /* Smooth scrolling for same-page anchors (services page uses #id links)
