@@ -20,9 +20,11 @@
     <meta name="twitter:description" content="Contact Fiscal Edge in Cairo, Egypt for audit, tax, and advisory support.">
     <meta name="twitter:image" content="https://www.fiscal-edge.org/assets/images/corporate/office-building.jpg">
 
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
-    <link rel="apple-touch-icon" href="assets/images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16.png">
 
+    <link rel="icon" href="assets/images/favicon.ico" sizes="48x48">
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
     <link rel="stylesheet" href="assets/css/plugins/fontawesome.css">
     <link rel="stylesheet" href="assets/css/plugins/swiper.css">
     <link rel="stylesheet" href="assets/css/plugins/metismenu.css">
@@ -52,6 +54,17 @@
       "areaServed": "EG"
     }
     </script>
+    <!-- Analytics (GA4): replace G-XXXXXXXXXX with your Measurement ID, then uncomment -->
+    <!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    -->
+
 </head>
 
 <body>
@@ -89,7 +102,7 @@
                         <div class="header-main-one-wrapper">
                             <div class="thumbnail">
                                 <a href="index.html">
-                                    <img src="assets/images/logo/fiscal-edge-logo-text.png" alt="Fiscal Edge logo">
+                                    <img src="assets/images/logo/fiscal-edge-logo.png" alt="Fiscal Edge logo" width="1254" height="1254"/>
                                 </a>
                             </div>
                             <div class="main-header">
@@ -195,7 +208,7 @@
                                                             </div>
                                                             <div class="col-lg-4">
                                                                 <div class="menu-thumb pl--20">
-                                                                    <img src="assets/images/corporate/about-main.jpg" alt="Fiscal Edge professionals in a meeting">
+                                                                    <img src="assets/images/corporate/about-main.jpg" alt="Fiscal Edge professionals in a meeting" width="1200" height="900"/>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -247,9 +260,9 @@
                 </div>
             </div>
             <div class="shape-area">
-                <img src="assets/images/about/shape/01.png" alt="" class="one">
-                <img src="assets/images/about/shape/02.png" alt="" class="two">
-                <img src="assets/images/about/shape/03.png" alt="" class="three">
+                <img src="assets/images/about/shape/01.png" alt="" class="one" loading="lazy" decoding="async" width="132" height="132"/>
+                <img src="assets/images/about/shape/02.png" alt="" class="two" loading="lazy" decoding="async" width="90" height="90"/>
+                <img src="assets/images/about/shape/03.png" alt="" class="three" loading="lazy" decoding="async" width="234" height="154"/>
             </div>
         </div>
         <!-- breadcrumb area end -->
@@ -298,41 +311,41 @@
                                 <span class="pre">Send an Inquiry</span>
                                 <h2 class="title">Tell Us About Your Needs</h2>
                             </div>
-                            <form id="contact-form" data-whatsapp="201234567890" novalidate>
+                            <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" data-whatsapp="201234567890" novalidate>
                                 <div id="form-messages" class="form-messages" role="status" aria-live="polite"></div>
                                 <div class="row g-4">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="name">Full Name <span class="req" aria-hidden="true">*</span></label>
-                                            <input type="text" id="name" name="name" placeholder="Your full name" required autocomplete="name" data-error="Please enter your name.">
-                                            <span class="field-error" role="alert"></span>
+                                            <input type="text" id="name" name="name" placeholder="Your full name" required autocomplete="name" aria-describedby="name-error" data-error="Please enter your name.">
+                                            <span class="field-error" role="alert" id="name-error"></span>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="company">Company</label>
-                                            <input type="text" id="company" name="company" placeholder="Company name (optional)" autocomplete="organization">
-                                            <span class="field-error" role="alert"></span>
+                                            <input type="text" id="company" name="company" placeholder="Company name (optional)" autocomplete="organization" aria-describedby="company-error">
+                                            <span class="field-error" role="alert" id="company-error"></span>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="email">Email Address <span class="req" aria-hidden="true">*</span></label>
-                                            <input type="email" id="email" name="email" placeholder="you@company.com" required autocomplete="email" data-error="Please enter a valid email address.">
-                                            <span class="field-error" role="alert"></span>
+                                            <input type="email" id="email" name="email" placeholder="you@company.com" required autocomplete="email" aria-describedby="email-error" data-error="Please enter a valid email address.">
+                                            <span class="field-error" role="alert" id="email-error"></span>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="phone">Phone Number</label>
-                                            <input type="tel" id="phone" name="phone" placeholder="+20 ..." autocomplete="tel">
-                                            <span class="field-error" role="alert"></span>
+                                            <input type="tel" id="phone" name="phone" placeholder="+20 ..." autocomplete="tel" aria-describedby="phone-error">
+                                            <span class="field-error" role="alert" id="phone-error"></span>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="service">Service / Area of Interest <span class="req" aria-hidden="true">*</span></label>
-                                            <select id="service" name="service" required data-error="Please select a service.">
+                                            <select id="service" name="service" required aria-describedby="service-error" data-error="Please select a service.">
                                                 <option value="" selected disabled>Select a service</option>
                                                 <option value="Audit &amp; Assurance">Audit &amp; Assurance</option>
                                                 <option value="Tax Services">Tax Services</option>
@@ -342,21 +355,20 @@
                                                 <option value="Training &amp; Development">Training &amp; Development</option>
                                                 <option value="Other">Other</option>
                                             </select>
-                                            <span class="field-error" role="alert"></span>
+                                            <span class="field-error" role="alert" id="service-error"></span>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="message">Message <span class="req" aria-hidden="true">*</span></label>
-                                            <textarea id="message" name="message" placeholder="Tell us briefly about what you need..." required data-error="Please include a short message."></textarea>
-                                            <span class="field-error" role="alert"></span>
+                                            <textarea id="message" name="message" placeholder="Tell us briefly about what you need..." required aria-describedby="message-error" data-error="Please include a short message."></textarea>
+                                            <span class="field-error" role="alert" id="message-error"></span>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <button type="submit" class="rts-btn btn-primary">Submit Inquiry</button>
                                         <p class="form-note">
-                                            Submitting opens a secure WhatsApp message (pre-filled with your details) with
-                                            an email fallback. We treat your information confidentially.
+                                            Your inquiry is sent directly to our team and treated confidentially.
                                         </p>
                                     </div>
                                 </div>
@@ -382,21 +394,21 @@
                 <div class="row g-5 mt--10">
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="fpe-icon-card">
-                            <div class="icon"><img src="assets/images/process/icon/01.svg" alt="Reply icon"></div>
+                            <div class="icon"><img src="assets/images/process/icon/01.svg" alt="Reply icon" loading="lazy" decoding="async"/></div>
                             <h3 class="title">Initial Response</h3>
                             <p class="disc">We confirm receipt of your inquiry and come back to you with a first response.</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="fpe-icon-card">
-                            <div class="icon"><img src="assets/images/process/icon/02.svg" alt="Consultation icon"></div>
+                            <div class="icon"><img src="assets/images/process/icon/02.svg" alt="Consultation icon" loading="lazy" decoding="async"/></div>
                             <h3 class="title">Consultation</h3>
                             <p class="disc">A conversation to understand your goals, challenges, and the best way we can help.</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="fpe-icon-card">
-                            <div class="icon"><img src="assets/images/process/icon/03.svg" alt="Proposal icon"></div>
+                            <div class="icon"><img src="assets/images/process/icon/03.svg" alt="Proposal icon" loading="lazy" decoding="async"/></div>
                             <h3 class="title">Written Proposal</h3>
                             <p class="disc">A clear written scope, approach, and timeline — agreed with you before any work begins.</p>
                         </div>
@@ -428,7 +440,7 @@
                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
                     <div class="footer-two-single-wized footer-three-single-wized left">
                         <h3 class="title animated fadeIn">
-                            <img src="assets/images/logo/fiscal-edge-logo-text.png" alt="Fiscal Edge logo">
+                            <img src="assets/images/logo/fiscal-edge-logo.png" alt="Fiscal Edge logo" fetchpriority="high" decoding="async" width="1254" height="1254"/>
                         </h3>
                         <p class="disc">
                             A professional services firm providing audit, tax, accounting, and advisory solutions
@@ -532,9 +544,9 @@
     <!-- footer area end -->
 
     <div id="side-bar" class="side-bar header-two">
-        <button class="close-icon-menu" title="Close menu"><i class="far fa-times" aria-hidden="true"></i></button>
+        <button class="close-icon-menu" aria-label="Close menu"><i class="far fa-times" aria-hidden="true"></i></button>
         <div class="rts-sidebar-menu-desktop">
-            <a class="logo-1" href="index.html"><img class="logo" src="assets/images/logo/fiscal-edge-logo-text.png" alt="Fiscal Edge logo"></a>
+            <a class="logo-1" href="index.html"><img class="logo" src="assets/images/logo/fiscal-edge-logo.png" alt="Fiscal Edge logo" loading="lazy" decoding="async" width="1254" height="1254"/></a>
             <div class="body d-none d-xl-block">
                 <p class="disc">
                     A professional services firm providing audit, tax, and advisory solutions with integrity and

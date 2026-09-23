@@ -1,0 +1,17 @@
+# OS / editor
+Thumbs.db
+.DS_Store
+*.log
+.idea/
+.vscode/
+
+# Runtime / dependencies
+node_modules/
+
+# Local dev-server copies (accidentally created in repo root)
+%LOCALAPPDATA%/
+%TEMP%/
+
+# One-off local tooling scripts
+_*.mjs
+_*.ps1
