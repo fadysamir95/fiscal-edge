@@ -102,6 +102,42 @@ select:focus-visible,
   margin: 0;
 }
 
+/* --- Home "Our Core Services" (why-choose-us-area):
+   equal thumbnail heights so the overlay icons sit on the same line,
+   and a centered CTA button under the cards --- */
+.why-choose-us-area .single-why-choose-four .thumbnail {
+  height: 400px;
+}
+.why-choose-us-area .single-why-choose-four .thumbnail img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.why-choose-us-area .rts-btn.btn-primary {
+  margin: 0 auto;
+}
+@media only screen and (max-width: 991px) {
+  .why-choose-us-area .single-why-choose-four .thumbnail {
+    height: 340px;
+  }
+}
+@media only screen and (max-width: 575px) {
+  .why-choose-us-area .single-why-choose-four .thumbnail {
+    height: 280px;
+  }
+}
+
+/* --- Home "Why Fiscal Edge" side features: navy titles --- */
+.business-solution-area-right-content .featuremain-wrapper .single-feature-wrapper .title {
+  color: #103d67;
+}
+
+/* --- Home "Our Professionals": center the CTA button --- */
+.rts-blog-area .rts-btn.btn-primary {
+  margin: 0 auto;
+}
+
 /* --- Check list (homepage about + about page) --- */
 .fpe-checks {
   display: grid;
@@ -126,6 +162,21 @@ select:focus-visible,
   .fpe-checks {
     grid-template-columns: 1fr;
   }
+}
+
+/* --- Home "Why Fiscal Edge": elegant hexagon photo without the
+   overlapping small image. The large photo fills the hexagon
+   uniformly via object-fit so the clip looks clean. --- */
+.business-solution-area-left-thumbnail .iamge-large {
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 1 / 1;
+}
+.business-solution-area-left-thumbnail .iamge-large img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* --- Office contact card (replaces stat counters) --- */
@@ -153,6 +204,74 @@ select:focus-visible,
 .fpe-office-card .inner span {
   font-size: 14px;
   line-height: 1.6;
+}
+
+/* --- Home "Why Fiscal Edge" office card: big number variant ---
+   (scoped to the homepage hexagon card only; keeps about.html card as-is) --- */
+.business-solution-area-left-thumbnail .success-rate-area .inner .icon {
+  background: transparent;
+  border-radius: 0;
+  width: auto;
+  height: auto;
+  color: #ffffff;
+  font-size: 46px;
+}
+.business-solution-area-left-thumbnail .success-rate-area .inner .title {
+  font-size: 50px;
+  line-height: 1;
+  font-weight: 800;
+  margin-bottom: 6px;
+  color: #ffffff;
+}
+
+/* --- Home "Who We Are": align small hexagon photo with the navy
+   hexagon frame (poligon-shape.svg is 234x266, portrait).
+   The small image box must keep the same aspect ratio so the
+   clip-path hexagon matches the frame; the photo fills it via
+   object-fit and is centered inside the navy frame. --- */
+.thumbnail-about-right-4 .poligon-shape {
+  left: -142px;
+  bottom: -41px;
+}
+.thumbnail-about-right-4 .small-image {
+  aspect-ratio: 234 / 266;
+  left: -134px;
+  bottom: -32px;
+}
+.thumbnail-about-right-4 .small-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media only screen and (max-width: 575px) {
+  .thumbnail-about-right-4 .small-image {
+    left: 6px;
+  }
+}
+.thumbnail-about-right-4 .large-iamge {
+  max-width: 432px;
+  margin-left: auto;
+}
+
+/* --- About "Who We Are" thumbnail: the navy counter card is a bit
+   smaller than the template default (all other template styles kept) --- */
+.left-thumbnail-about-area-two .counter-about-area {
+  padding: 28px 24px;
+}
+
+/* --- Home CTA banner: keep the photo compact so the heading gets
+   more width (default template shows the image at natural size,
+   which squeezes the text next to it) --- */
+.bg_call-toaction-4 .cta-four-wrapper .left .img-area {
+  flex: 0 0 auto;
+}
+.bg_call-toaction-4 .cta-four-wrapper .left .img-area img {
+  display: block;
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 /* --- Contact form (contact.html) --- */
@@ -488,6 +607,122 @@ select:focus-visible,
 
 .banner-seven-swiper-wrapper .email-area-left::after {
   display: none;
+}
+
+/* Tighten the spacing between the envelope icon and the email address */
+.banner-seven-swiper-wrapper .email-area-left {
+  gap: 20px;
+}
+
+/* ==========================================================================
+   Contact page — text on the dark teal info panel (`.contact-info-area-wrapper-p`)
+   is white so it stays readable on the teal background. The white boxed
+   `.fpe-info-card` items keep their own colors.
+   ========================================================================== */
+
+.contact-info-area-wrapper-p .title-style-two .pre,
+.contact-info-area-wrapper-p .title-style-two .title {
+  color: #FFFFFF;
+}
+
+/* The "Explore Our Services" button inside the panel is transparent (btn-border),
+   so its text must be white to stay readable on the teal background.
+   (btn-primary included in the selector to out-rank the light-section rule above.) */
+.contact-info-area-wrapper-p .rts-btn.btn-primary.btn-border {
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.55);
+}
+.contact-info-area-wrapper-p .rts-btn.btn-primary.btn-border:hover {
+  background: #103d67;
+  color: #FFFFFF;
+  border-color: #103d67;
+}
+
+/* ==========================================================================
+   Brand polish — hover/focus interactions aligned with the navy/teal identity
+   ========================================================================== */
+
+/* The template references --color-heading but never declares it;
+   define it as the brand navy so headings/citations render correctly. */
+:root {
+  --color-heading: #103d67;
+}
+}
+
+/* Smooth scrolling for same-page anchors (services page uses #id links)
+   and offset so the fixed header doesn't cover the target section. */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 132px;
+}
+
+/* Brand-tinted text selection */
+::selection {
+  background: #29878e;
+  color: #ffffff;
+}
+
+/* Visible keyboard focus. The template strips focus borders on buttons
+   (.rts-btn:focus), so restore a clear brand-colored ring for keyboard users. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #29878e;
+  outline-offset: 3px;
+}
+
+/* Primary CTA: teal -> navy fill with white text on hover.
+   (The .btn-white variant keeps its own colors — higher specificity.) */
+.rts-btn.btn-primary {
+  color: #ffffff;
+}
+.rts-btn.btn-primary::before {
+  background: #103d67;
+}
+.rts-btn.btn-primary:hover {
+  background: #103d67;
+  color: #ffffff;
+}
+
+/* Outline-style primary buttons (btn-primary + btn-border) sit on LIGHT
+   sections (about / 404): navy text + light border so they stay readable.
+   On hover the outline fills navy and the text turns white. */
+.rts-btn.btn-primary.btn-border {
+  color: #103d67;
+}
+.rts-btn.btn-primary.btn-border:hover {
+  background: #103d67;
+  color: #ffffff;
+  border-color: #103d67;
+}
+
+/* Exception: the same outline combo inside the dark hero (index) must
+   keep white text on the video background. */
+.banner-seven-inner-content .rts-btn.btn-primary.btn-border {
+  color: #ffffff;
+}
+
+/* Feature tiles ("Why Fiscal Edge"): add a soft brand shadow and shift
+   the title to teal on hover, on top of the template's lift effect. */
+.business-solution-area-right-content .featuremain-wrapper .single-feature-wrapper {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.business-solution-area-right-content .featuremain-wrapper .single-feature-wrapper:hover {
+  box-shadow: 0 18px 40px rgba(16, 61, 103, 0.10);
+}
+.business-solution-area-right-content .featuremain-wrapper .single-feature-wrapper:hover .title {
+  color: #29878e;
+}
+
+/* --- Career page: center the "Open Positions" block and its CTA button --- */
+.fpe-open-positions {
+  text-align: center;
+}
+.fpe-open-positions .rts-btn.btn-primary {
+  margin: 0 auto;
 }
 
 /* --- Reduced motion --- */
