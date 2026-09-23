@@ -52,7 +52,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid #201F5021;
+    border: 1px solid #103d6721;
 
     @media #{$smlg-device} {
         flex-wrap: wrap;
@@ -61,7 +61,7 @@
 
     .single-counter-area-main {
         padding: 90px 55px 73px 55px;
-        border-right: 1px solid #201F5021;
+        border-right: 1px solid #103d6721;
 
         @media #{$smlg-device} {
             border: none;
@@ -84,7 +84,7 @@
             font-weight: 700;
             font-size: 16px;
             text-transform: uppercase;
-            color: #201F50;
+            color: #103d67;
         }
 
         &:last-child {

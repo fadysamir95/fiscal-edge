@@ -25,7 +25,7 @@
     &.left {
         .title {
             font-size: 36px;
-            color: #201F50;
+            color: #103d67;
             line-height: 46px;
 
             span {
@@ -130,7 +130,7 @@
             }
 
             a {
-                color: #201F50;
+                color: #103d67;
                 font-weight: 500;
                 font-size: 16px;
                 transition: .3s;
@@ -156,7 +156,7 @@
 
         p.disc {
             margin-bottom: 0;
-            color: #201F50;
+            color: #103d67;
             font-weight: 500;
 
             @media #{$large-mobile} {
@@ -185,7 +185,7 @@
 
                     a {
                         transition: .3s;
-                        color: #201F50;
+                        color: #103d67;
                         font-weight: 500;
                     }
                 }
@@ -197,7 +197,7 @@
 
 
 .rts-footer-area-two {
-    background-color: #201F50;
+    background-color: #103d67;
 }
 
 .bg-footer-two {
@@ -486,7 +486,7 @@
                 background: #FFFFFF;
 
                 &:focus {
-                    border: 1px solid #201F50;
+                    border: 1px solid #103d67;
                 }
             }
 
@@ -494,7 +494,7 @@
                 height: 55px;
                 width: 55px;
                 border-radius: 8px;
-                background: #201F50;
+                background: #103d67;
                 color: #fff;
                 position: absolute;
                 right: 0;
@@ -546,7 +546,7 @@
 
     .title-main {
         font-size: 40px;
-        color: #201F50;
+        color: #103d67;
         margin-bottom: 13px;
         margin-top: 20px;
     }
@@ -576,7 +576,7 @@
                 border-radius: 50%;
 
                 i {
-                    color: #201F50;
+                    color: #103d67;
                 }
             }
 
@@ -818,7 +818,7 @@
                         }
 
                         a {
-                            color: #201F50;
+                            color: #103d67;
                             font-size: 16px;
                             font-weight: 600;
                             transition: .3s;
@@ -851,7 +851,7 @@
                 position: relative;
                 z-index: 1;
                 transition: .3s;
-                color: #201F50;
+                color: #103d67;
 
                 &::after {
                     position: absolute;
@@ -892,10 +892,10 @@
         font-weight: 400;
         font-size: 16px;
         line-height: 21px;
-        color: #201F50;
+        color: #103d67;
 
         P {
-            color: #201F50;
+            color: #103d67;
             flex-wrap: 400;
             font-size: 16px;
         }
@@ -1023,7 +1023,7 @@
     .footer-one-single-wized {
         &.mid-bg {
             padding: 40px;
-            background: linear-gradient(180deg, #354046 -15.16%, #201F50 100%);
+            background: linear-gradient(180deg, #354046 -15.16%, #103d67 100%);
             border-radius: 15px;
             margin-top: -40px;
             margin: -40px 30px 0 30px;

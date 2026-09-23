@@ -1,7 +1,7 @@
 /* ==========================================================================
    Fiscal Edge — site-level styles (additive, brand-consistent)
    Design tokens preserved from assets/scss/default/_variables.scss
-   Primary: #f39e1e | Secondary: #201F50 | Title: #141416 | Body: #5D666F
+   Primary: #29878e | Secondary: #103d67 | Title: #141416 | Body: #5D666F
    ========================================================================== */
 
 /* --- Accessibility: skip link --- */
@@ -10,7 +10,7 @@
   left: -9999px;
   top: 0;
   z-index: 9999;
-  background: #201F50;
+  background: #103d67;
   color: #fff;
   padding: 12px 20px;
   border-radius: 0 0 8px 0;
@@ -29,7 +29,7 @@ input:focus-visible,
 textarea:focus-visible,
 select:focus-visible,
 [tabindex]:focus-visible {
-  outline: 3px solid #f39e1e;
+  outline: 3px solid #29878e;
   outline-offset: 2px;
 }
 
@@ -43,12 +43,19 @@ select:focus-visible,
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(22, 22, 48, 0.9) 0%, rgba(32, 31, 80, 0.68) 45%, rgba(32, 31, 80, 0.18) 100%);
+  background: linear-gradient(90deg, rgba(22, 22, 48, 0.9) 0%, rgba(16, 61, 103, 0.68) 45%, rgba(16, 61, 103, 0.18) 100%);
   z-index: 0;
 }
 .bg_banner-seven.two .container {
   position: relative;
   z-index: 1;
+}
+
+/* --- Working process (services page): process icons are navy-filled
+   (same files as the fpe-icon-card chips), so the icon circle on the
+   dark navy "How we work" section must be light to keep them visible --- */
+.working-process-one .single-working-process-one .left .icon {
+  background: #FFFFFF;
 }
 
 /* --- Generic icon card (value props / industries / professionals) --- */
@@ -62,14 +69,14 @@ select:focus-visible,
 }
 .fpe-icon-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 24px 48px rgba(32, 31, 80, 0.10);
-  border-color: rgba(243, 158, 30, 0.45);
+  box-shadow: 0 24px 48px rgba(16, 61, 103, 0.10);
+  border-color: rgba(41, 135, 142, 0.45);
 }
 .fpe-icon-card .icon {
   width: 64px;
   height: 64px;
   border-radius: 10px;
-  background: rgba(243, 158, 30, 0.12);
+  background: rgba(41, 135, 142, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -111,7 +118,7 @@ select:focus-visible,
   font-size: 15px;
 }
 .fpe-checks .item i {
-  color: #f39e1e;
+  color: #29878e;
   font-size: 18px;
   margin-top: 2px;
 }
@@ -123,14 +130,14 @@ select:focus-visible,
 
 /* --- Office contact card (replaces stat counters) --- */
 .fpe-office-card .inner {
-  padding: 28px;
+  padding: 8px;
 }
 .fpe-office-card .inner .icon {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: rgba(243, 158, 30, 0.15);
-  color: #f39e1e;
+  background: rgba(41, 135, 142, 0.15);
+  color: #29878e;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -160,7 +167,7 @@ select:focus-visible,
   margin-bottom: 8px;
 }
 .contact-form-p label .req {
-  color: #f39e1e;
+  color: #29878e;
 }
 .contact-form-p input,
 .contact-form-p select,
@@ -185,8 +192,8 @@ select:focus-visible,
 .contact-form-p input:focus,
 .contact-form-p select:focus,
 .contact-form-p textarea:focus {
-  border-color: #f39e1e;
-  box-shadow: 0 0 0 3px rgba(243, 158, 30, 0.18);
+  border-color: #29878e;
+  box-shadow: 0 0 0 3px rgba(41, 135, 142, 0.18);
   outline: none;
 }
 .contact-form-p .field-error {
@@ -232,7 +239,7 @@ select:focus-visible,
   color: #5D666F;
 }
 .contact-form-p .form-note a {
-  color: #201F50;
+  color: #103d67;
   font-weight: 600;
 }
 
@@ -305,8 +312,8 @@ select:focus-visible,
 
 /* --- Career page: open-positions notice --- */
 .fpe-open-positions {
-  border: 1px dashed rgba(243, 158, 30, 0.6);
-  background: rgba(243, 158, 30, 0.07);
+  border: 1px dashed rgba(41, 135, 142, 0.6);
+  background: rgba(41, 135, 142, 0.07);
   border-radius: 10px;
   padding: 36px 30px;
   text-align: center;
@@ -346,7 +353,7 @@ select:focus-visible,
    The template ships two regressions on the light footer:
    1. `.footer-two-single-wized.right` gets `margin-top: 77px`, which drops
       the "Contact Us" widget below the other columns.
-   2. Widget headings inherit the ORANGE `--color-heading-1` token (#f39e1e);
+   2. Widget headings inherit the ORANGE `--color-heading-1` token (#29878e);
       on the grey footer texture (02.webp is a 60x3px #D9D9D9 strip stretched
       to "cover") that reads at ~1.5:1 contrast — effectively invisible.
    ========================================================================== */
@@ -369,14 +376,14 @@ select:focus-visible,
 
 /* Readable widget headings ("Our Services" / "Company" / "Contact Us") */
 .rts-footer-area .footer-two-single-wized .wized-title {
-  color: #201F50;
+  color: #103d67;
   font-weight: 700;
 }
 
 /* Footer link hover accent — the template references `--color-primary-2`
    but never declares it, so footer hovers silently did nothing */
 :root {
-  --color-primary-2: #d9860a;
+  --color-primary-2: #216C72;
 }
 
 /* ==========================================================================
@@ -404,8 +411,8 @@ select:focus-visible,
 }
 .fpe-info-card:hover {
   transform: translateY(-4px);
-  border-color: #f39e1e;
-  box-shadow: 0 18px 35px rgba(32, 31, 80, 0.08);
+  border-color: #29878e;
+  box-shadow: 0 18px 35px rgba(16, 61, 103, 0.08);
 }
 .fpe-info-card .icon {
   flex: 0 0 52px;
@@ -415,8 +422,8 @@ select:focus-visible,
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: rgba(243, 158, 30, 0.12);
-  color: #f39e1e;
+  background: rgba(41, 135, 142, 0.12);
+  color: #29878e;
   font-size: 20px;
 }
 .fpe-info-card .meta {
@@ -432,7 +439,7 @@ select:focus-visible,
   font-weight: 600;
 }
 .fpe-info-card .meta strong {
-  color: #201F50;
+  color: #103d67;
   font-size: 17px;
   font-weight: 600;
   word-break: break-word;
@@ -444,7 +451,7 @@ select:focus-visible,
   border: 1px solid #EEEBFB;
   border-radius: 10px;
   padding: 40px 36px;
-  box-shadow: 0 18px 45px rgba(32, 31, 80, 0.07);
+  box-shadow: 0 18px 45px rgba(16, 61, 103, 0.07);
 }
 @media only screen and (max-width: 575px) {
   .fpe-form-card {
@@ -457,7 +464,7 @@ select:focus-visible,
   border: 1px solid #EEEBFB;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 18px 45px rgba(32, 31, 80, 0.06);
+  box-shadow: 0 18px 45px rgba(16, 61, 103, 0.06);
 }
 .fpe-map-card iframe {
   display: block;

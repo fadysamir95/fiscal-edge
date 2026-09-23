@@ -61,11 +61,11 @@
                         width: 40px;
                         background: #F6F6F6;
                         border-radius: 50%;
-                        color: #201F50;
+                        color: #103d67;
                         transition: .4s;
 
                         &:hover {
-                            background: #201F50;
+                            background: #103d67;
                             color: #fff;
                         }
                     }
@@ -217,7 +217,7 @@
             content: "";
             height: 200px;
             width: 200px;
-            background: #201F502e;
+            background: #103d672e;
             filter: blur(79px);
             transform: translateX(-50%);
             z-index: -1;
