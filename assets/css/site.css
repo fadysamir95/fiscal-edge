@@ -992,11 +992,30 @@ select:focus-visible,
 }
 
 /* ==========================================================================
+   Scroll-to-top vs WhatsApp
+   --------------------------------------------------------------------------
+   The template parks .progress-wrap in the bottom-right corner — exactly
+   where the WhatsApp button goes — so the two overlapped and only the
+   top one was clickable. Keep them on opposite sides, and flip both with
+   `dir` so they stay opposite in Arabic too.
+   ========================================================================== */
+
+.progress-wrap {
+  right: auto;
+  left: 30px;
+}
+
+[dir="rtl"] .progress-wrap {
+  left: auto;
+  right: 30px;
+}
+
+/* ==========================================================================
    WhatsApp — fixed contact button
    --------------------------------------------------------------------------
-   One number, one button, every page. Sits in the bottom corner opposite
-   the reading direction so it never lands on top of the content the
-   visitor is currently reading, and flips with `dir` in Arabic.
+   One number, one button, every page. Sits in the bottom corner where the
+   reading starts, so it never lands on top of the content the visitor is
+   currently reading, and flips with `dir` in Arabic.
    ========================================================================== */
 
 .fpe-whatsapp-fab {
