@@ -108,6 +108,19 @@ html[lang="ar"] .ml_sm--5 {
   margin-right: 5px !important;
 }
 
+/* --- Header services menu --------------------------------------------------
+   Each service in the header's Services dropdown is a flex row of an icon and
+   its text. Arabic flips that row, so the icon moves to the right -- but the
+   template spaces the pair apart with `margin-right` on the icon, which then
+   falls on the icon's outer edge and leaves the title and description pressed
+   against it. Moving the gap to the left is the same flip the template already
+   applies to its other icon-and-text components, and it leaves the Latin
+   layout untouched because this rule is scoped to Arabic. */
+html[lang="ar"] .rts-mega-menu.service-mega-menu-style li a .single-service-menu .icon {
+  margin-right: 0;
+  margin-left: 15px;
+}
+
 /* --- Language switcher ----------------------------------------------------
    The template parks a vertical gradient pill on the right edge of the
    viewport. It now sits inline in the header, right beside the primary
