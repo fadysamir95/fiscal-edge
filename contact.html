@@ -36,9 +36,20 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <script>
+        // Apply the saved language direction before the first paint, so an
+        // Arabic return visit does not flash the English layout first.
+        try {
+            if (localStorage.getItem('fpe:lang') === 'ar') {
+                document.documentElement.setAttribute('lang', 'ar');
+                document.documentElement.setAttribute('dir', 'rtl');
+            }
+        } catch (e) { /* storage unavailable */ }
+    </script>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/site.css">
+    <link rel="stylesheet" href="assets/css/i18n.css">
 
     <script type="application/ld+json">
     {
@@ -51,8 +62,14 @@
       "telephone": "+20 1271360003",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Cairo",
+        "addressLocality": "Heliopolis",
+        "addressRegion": "Cairo Governorate",
         "addressCountry": "EG"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 30.06890296936035,
+        "longitude": 31.24359703063965
       },
       "areaServed": "EG"
     }
@@ -234,6 +251,13 @@
                                 </div>
                                 <div class="button-area">
                                     <a href="contact.html" class="rts-btn btn-primary ml--20 ml_sm--5 header-one-btn quote-btn">Request a Meeting</a>
+                                    <!-- language switcher: the label and the aria-label are
+                                         swapped by assets/js/i18n.js -->
+                                    <button type="button" class="rtl-ltr-switcher-btn ml--20 ml_sm--5" data-i18n-ignore aria-label="Switch to Arabic">
+                                        <i class="fa-solid fa-globe" aria-hidden="true"></i>
+                                        <span class="ltr show">عربي</span>
+                                        <span class="rtl">English</span>
+                                    </button>
                                     <button id="menu-btn" class="menu menu-btn ml--20 ml_sm--5" aria-label="Open menu">
                                         <img class="menu-light" src="assets/images/icons/01.svg" alt="Menu icon">
                                     </button>
@@ -298,11 +322,11 @@
                                     <strong>info@fiscal-edge.org</strong>
                                 </span>
                             </a>
-                            <a class="fpe-info-card" href="https://www.google.com/maps?q=Cairo,Egypt" target="_blank" rel="noopener">
+                            <a class="fpe-info-card" href="https://www.google.com/maps?q=30.06890296936035,31.24359703063965&amp;z=17&amp;hl=en" target="_blank" rel="noopener">
                                 <span class="icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
                                 <span class="meta">
                                     <small>Our Location</small>
-                                    <strong>Cairo, Egypt</strong>
+                                    <strong>Heliopolis, Cairo</strong>
                                 </span>
                             </a>
                             <a href="services.html" class="rts-btn btn-primary btn-border mt--10">Explore Our Services</a>
@@ -314,7 +338,7 @@
                                 <span class="pre">Send an Inquiry</span>
                                 <h2 class="title">Tell Us About Your Needs</h2>
                             </div>
-                            <form id="contact-form" action="https://formsubmit.co/contact@fiscal-edge.org" method="POST" data-ajax-endpoint="https://formsubmit.co/ajax/contact@fiscal-edge.org" data-whatsapp="201271360003" novalidate>
+                            <form id="contact-form" data-whatsapp="201271360003" novalidate>
                                 <div id="form-messages" class="form-messages" role="status" aria-live="polite"></div>
                                 <div class="row g-4">
                                     <div class="col-md-6">
@@ -371,7 +395,7 @@
                                     <div class="col-12">
                                         <button type="submit" class="rts-btn btn-primary">Submit Inquiry</button>
                                         <p class="form-note">
-                                            Your inquiry is sent directly to our team and treated confidentially.
+                                            Submitting opens WhatsApp with your details, so you can send them straight to our team.
                                         </p>
                                     </div>
                                 </div>
@@ -427,7 +451,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="fpe-map-card">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55251.37451031098!2d31.258464350000004!3d30.059488450000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583fa60b21beeb%3A0x79dfb296e8423bba!2sCairo%2C%20Cairo%20Governorate!5e0!3m2!1sen!2seg!4v1767447172003!5m2!1sen!2seg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map of Cairo, Egypt"></iframe>
+                            <iframe src="https://maps.google.com/maps?q=30.06890296936035,31.24359703063965&amp;z=17&amp;hl=en&amp;output=embed" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map of Heliopolis, Cairo"></iframe>
                         </div>
                     </div>
                 </div>
@@ -515,7 +539,7 @@
                                 </div>
                                 <div class="disc">
                                     <span>Our Location</span>
-                                    <a href="contact.html">Cairo, Egypt</a>
+                                    <a href="contact.html">Heliopolis, Cairo</a>
                                 </div>
                             </div>
                         </div>
@@ -568,7 +592,7 @@
                         </div>
                         <div class="single">
                             <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                            <a href="contact.html">Cairo, Egypt</a>
+                            <a href="contact.html">Heliopolis, Cairo</a>
                         </div>
                     </div>
                 </div>
@@ -608,8 +632,22 @@
     <script defer src="assets/js/plugins/popup.js"></script>
     <script defer src="assets/js/vendor/bootstrap.min.js"></script>
     <script defer src="assets/js/plugins/swiper.js"></script>
+    <script defer src="assets/js/i18n-ar.js"></script>
+    <script defer src="assets/js/i18n.js"></script>
     <script defer src="assets/js/main.js"></script>
     <script defer src="assets/js/site.js"></script>
+
+    <!-- WhatsApp: opens a prefilled chat with the office number. assets/js/site.js
+         rewrites the ?text= part so it matches the current language. -->
+    <a class="fpe-whatsapp-fab"
+       href="https://wa.me/201271360003?text=Hello%20Fiscal%20Edge%2C%20I%20would%20like%20to%20make%20an%20inquiry."
+       target="_blank" rel="noopener"
+       aria-label="Chat with us on WhatsApp"
+       data-wa-en="Hello Fiscal Edge, I would like to make an inquiry."
+       data-wa-ar="Fiscal Edge، أرغب في الاستفسار عن خدماتكم.">
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+    </a>
+
 </body>
 
 </html>

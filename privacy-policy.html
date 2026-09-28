@@ -36,9 +36,20 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <script>
+        // Apply the saved language direction before the first paint, so an
+        // Arabic return visit does not flash the English layout first.
+        try {
+            if (localStorage.getItem('fpe:lang') === 'ar') {
+                document.documentElement.setAttribute('lang', 'ar');
+                document.documentElement.setAttribute('dir', 'rtl');
+            }
+        } catch (e) { /* storage unavailable */ }
+    </script>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/site.css">
+    <link rel="stylesheet" href="assets/css/i18n.css">
     <!-- Analytics (GA4): replace G-XXXXXXXXXX with your Measurement ID, then uncomment -->
     <!--
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
@@ -216,6 +227,13 @@
                                 </div>
                                 <div class="button-area">
                                     <a href="contact.html" class="rts-btn btn-primary ml--20 ml_sm--5 header-one-btn quote-btn">Request a Meeting</a>
+                                    <!-- language switcher: the label and the aria-label are
+                                         swapped by assets/js/i18n.js -->
+                                    <button type="button" class="rtl-ltr-switcher-btn ml--20 ml_sm--5" data-i18n-ignore aria-label="Switch to Arabic">
+                                        <i class="fa-solid fa-globe" aria-hidden="true"></i>
+                                        <span class="ltr show">عربي</span>
+                                        <span class="rtl">English</span>
+                                    </button>
                                     <button id="menu-btn" class="menu menu-btn ml--20 ml_sm--5" aria-label="Open menu">
                                         <img class="menu-light" src="assets/images/icons/01.svg" alt="Menu icon">
                                     </button>
@@ -432,7 +450,7 @@
                                 </div>
                                 <div class="disc">
                                     <span>Our Location</span>
-                                    <a href="contact.html">Cairo, Egypt</a>
+                                    <a href="contact.html">Heliopolis, Cairo</a>
                                 </div>
                             </div>
                         </div>
@@ -485,7 +503,7 @@
                         </div>
                         <div class="single">
                             <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                            <a href="contact.html">Cairo, Egypt</a>
+                            <a href="contact.html">Heliopolis, Cairo</a>
                         </div>
                     </div>
                 </div>
@@ -525,8 +543,22 @@
     <script defer src="assets/js/plugins/popup.js"></script>
     <script defer src="assets/js/vendor/bootstrap.min.js"></script>
     <script defer src="assets/js/plugins/swiper.js"></script>
+    <script defer src="assets/js/i18n-ar.js"></script>
+    <script defer src="assets/js/i18n.js"></script>
     <script defer src="assets/js/main.js"></script>
     <script defer src="assets/js/site.js"></script>
+
+    <!-- WhatsApp: opens a prefilled chat with the office number. assets/js/site.js
+         rewrites the ?text= part so it matches the current language. -->
+    <a class="fpe-whatsapp-fab"
+       href="https://wa.me/201271360003?text=Hello%20Fiscal%20Edge%2C%20I%20would%20like%20to%20make%20an%20inquiry."
+       target="_blank" rel="noopener"
+       aria-label="Chat with us on WhatsApp"
+       data-wa-en="Hello Fiscal Edge, I would like to make an inquiry."
+       data-wa-ar="Fiscal Edge، أرغب في الاستفسار عن خدماتكم.">
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+    </a>
+
 </body>
 
 </html>

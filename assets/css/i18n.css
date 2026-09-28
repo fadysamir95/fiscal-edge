@@ -1,0 +1,211 @@
+/* ==========================================================================
+   Fiscal Edge — Arabic / RTL presentation
+   --------------------------------------------------------------------------
+   The layout keeps the template's own styling. These rules only cover what
+   `dir="rtl"` cannot fix on its own: the Arabic typeface, Arabic reading
+   comfort, and the handful of spots where Latin values or directional icons
+   have to stay left-to-right.
+   ========================================================================== */
+
+/* --- Typeface -------------------------------------------------------------
+   DM Sans / Red Hat Display have no Arabic glyphs, so Arabic would fall back
+   to whatever the device ships. Cairo is loaded from Google Fonts in the page
+   <head>; it is a variable font, so weights come for free. */
+
+html[lang="ar"] body,
+html[lang="ar"] .title,
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] h4,
+html[lang="ar"] h5,
+html[lang="ar"] h6,
+html[lang="ar"] button,
+html[lang="ar"] input,
+html[lang="ar"] select,
+html[lang="ar"] textarea,
+html[lang="ar"] .rts-btn {
+  font-family: "Cairo", "Segoe UI", Tahoma, sans-serif;
+}
+
+/* Arabic sets smaller than Latin at the same nominal size, and needs more
+   vertical room because of the diacritics and descenders. */
+html[lang="ar"] body {
+  line-height: 1.9;
+}
+
+html[lang="ar"] p,
+html[lang="ar"] li,
+html[lang="ar"] .disc,
+html[lang="ar"] .para,
+html[lang="ar"] .details {
+  line-height: 1.9;
+}
+
+/* Cairo at the template's 800/900 display weights reads as a slab. 700 keeps
+   the same hierarchy without the heaviness. */
+html[lang="ar"] .title,
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] h4,
+html[lang="ar"] h5,
+html[lang="ar"] h6,
+html[lang="ar"] .rts-btn {
+  font-weight: 700;
+  letter-spacing: normal;
+}
+
+/* --- Latin values that must stay left-to-right ----------------------------
+   A phone number inside an RTL paragraph is reordered by the bidi algorithm
+   and reads as "1271360003+20". Isolating each run keeps it intact. */
+
+html[lang="ar"] a[href^="tel:"],
+html[lang="ar"] a[href^="mailto:"],
+html[lang="ar"] a[href*="fiscal-edge.org"],
+html[lang="ar"] .fpe-loader-percent,
+html[lang="ar"] #year {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+/* Email and phone are typed left-to-right even in an Arabic form, but the
+   field itself still sits on the right edge of the page. */
+html[lang="ar"] input[type="email"],
+html[lang="ar"] input[type="tel"] {
+  direction: ltr;
+  text-align: right;
+}
+
+/* --- Directional icons ----------------------------------------------------
+   "next" points the wrong way once the text runs right-to-left. */
+
+html[lang="ar"] .fa-arrow-right,
+html[lang="ar"] .fa-arrow-left,
+html[lang="ar"] .fa-chevron-right,
+html[lang="ar"] .fa-chevron-left,
+html[lang="ar"] .fa-chevron-double-right,
+html[lang="ar"] .fa-chevron-double-left {
+  transform: scaleX(-1);
+}
+
+/* --- Spacing nudges -------------------------------------------------------
+   The template only ever uses these left-side helpers, so flipping just
+   those is enough. `ml--20` is already flipped in style.css; `ml_sm--5`
+   (the small-screen variant the header controls use) is not. */
+html[lang="ar"] .ml--20 {
+  margin-left: 0 !important;
+  margin-right: 20px !important;
+}
+
+html[lang="ar"] .pl--20 {
+  padding-left: 0 !important;
+  padding-right: 20px !important;
+}
+
+html[lang="ar"] .ml_sm--5 {
+  margin-left: 0 !important;
+  margin-right: 5px !important;
+}
+
+/* --- Language switcher ----------------------------------------------------
+   The template parks a vertical gradient pill on the right edge of the
+   viewport. It now sits inline in the header, right beside the primary
+   "Request a Meeting" CTA, so it reads as a control and not as a tab
+   glued to the screen edge. The reset below undoes the template's
+   positioning; the rest matches the CTA it now sits next to. */
+
+.rtl-ltr-switcher-btn {
+  /* undo the template's fixed, vertical, animated pill */
+  position: static;
+  writing-mode: horizontal-tb;
+  transform: none;
+  animation: none;
+  z-index: auto;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  height: 55px;                    /* .rts-btn is 55px tall */
+  padding: 0 24px;
+  background: transparent;
+  border: 1px solid;
+  white-space: nowrap;
+  font-family: "Cairo", "Segoe UI", Tahoma, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.rtl-ltr-switcher-btn i {
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* The template hides the inactive label with `display: block`; as flex items
+   they need to sit on one line with the icon instead. */
+.rtl-ltr-switcher-btn .ltr,
+.rtl-ltr-switcher-btn .rtl {
+  display: none;
+}
+
+.rtl-ltr-switcher-btn .ltr.show,
+.rtl-ltr-switcher-btn .rtl.show {
+  display: inline;
+}
+
+.rtl-ltr-switcher-btn:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+/* --- The two header treatments -------------------------------------------
+   index.html floats its header over a dark hero and turns navy once it
+   sticks; the other eight pages sit on a light header. Each gets the
+   switcher that matches its own CTA's shape and colour. */
+
+.header-transparent-main-wrapper .rtl-ltr-switcher-btn {
+  border-color: rgba(255, 255, 255, 0.5);
+  border-radius: 100px;            /* its CTA is a pill here */
+  color: #ffffff;
+}
+
+.header-transparent-main-wrapper .rtl-ltr-switcher-btn:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #103d67;
+}
+
+.header-main-one-wrapper .rtl-ltr-switcher-btn {
+  border-color: rgba(16, 61, 103, 0.28);
+  border-radius: 15px;             /* its CTA is a rounded rect here */
+  color: #103d67;
+}
+
+.header-main-one-wrapper .rtl-ltr-switcher-btn:hover {
+  background: #103d67;
+  border-color: #103d67;
+  color: #ffffff;
+}
+
+/* --- Narrow screens -------------------------------------------------------
+   The CTA hides itself under 575px (479px on the homepage) and leaves just
+   the hamburger, so the switcher has to stay compact enough to fit. */
+
+@media only screen and (max-width: 575px) {
+  .rtl-ltr-switcher-btn {
+    height: 46px;
+    padding: 0 16px;
+    font-size: 14px;
+    gap: 7px;
+  }
+
+  .rtl-ltr-switcher-btn i {
+    font-size: 14px;
+  }
+}

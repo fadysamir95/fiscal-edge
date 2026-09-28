@@ -20,6 +20,36 @@
       .replace(/'/g, '&#39;');
   }
 
+  // Fixed chat button, on every page. The ?text= half of the href is rebuilt
+  // whenever the language changes, so an Arabic visitor opens an Arabic chat.
+  function initWhatsAppFab() {
+    var fab = document.querySelector('.fpe-whatsapp-fab');
+    if (!fab) return;
+
+    var number = (fab.getAttribute('href') || '').match(/wa\.me\/(\d+)/);
+    if (!number) return;
+
+    function paint() {
+      var arabic = document.documentElement.getAttribute('dir') === 'rtl';
+      var text = fab.getAttribute(arabic ? 'data-wa-ar' : 'data-wa-en');
+      if (!text) return;
+      fab.setAttribute(
+        'href',
+        'https://wa.me/' + number[1] + '?text=' + encodeURIComponent(text)
+      );
+    }
+
+    paint();
+    document.addEventListener('fpe:languagechange', paint);
+  }
+
+  // Translate one string through the Arabic dictionary when the page is in
+  // Arabic. Falls back to the English it was given.
+  function t(text) {
+    var api = window.FiscalEdgeI18n;
+    return api && api.t ? api.t(text) : text;
+  }
+
   /* --- Anchor smooth scroll (with sticky header offset) --- */
   function initAnchorScroll() {
     var header = document.querySelector('.header--sticky');
@@ -47,72 +77,38 @@
     });
   }
 
-  /* --- Contact form --- */
+  /* --- Contact form ---
+     There is no server behind this form. The visit is handed straight to
+     WhatsApp with their answers pre-filled, and the email link in the
+     confirmation is the fallback for browsers that block the hand-off. */
   function postForm(form, data) {
-    var endpoint = form.getAttribute('action') || '';
-    var ajaxEndpoint = form.getAttribute('data-ajax-endpoint') || '';
-
-    /* FormSubmit configured (action URL contains the delivery inbox):
-       send as JSON so the visitor stays on the page. */
-    if (ajaxEndpoint) {
-      return fetch(ajaxEndpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({
-          _subject: 'Inquiry via fiscal-edge.org — ' + data.name,
-          name: data.name,
-          company: data.company,
-          email: data.email,
-          phone: data.phone,
-          service: data.service,
-          message: data.message
-        })
-      }).then(function (res) {
-        return res.json().then(function (j) {
-          if (res.ok && String(j.success) === 'true') return { ok: true };
-          var msg = (j && j.message) || ('Submission failed (status ' + res.status + ')');
-          throw new Error(msg);
-        });
-      });
+    var whatsapp = (form.getAttribute('data-whatsapp') || '').replace(/\D/g, '');
+    if (!whatsapp) {
+      return Promise.reject(new Error(t('WhatsApp is not configured for this form.')));
     }
 
-    /* Formspree configured: send via fetch (progressive enhancement — the
-       native action also works if JS fails). */
-    if (/^https:\/\//.test(endpoint) && endpoint.indexOf('YOUR_FORM_ID') === -1) {
-      return fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(form)
-      }).then(function (res) {
-        if (res.ok) return { ok: true };
-        return res.json().then(function (j) {
-          var msg = (j && j.errors && j.errors[0] && j.errors[0].message) || ('Submission failed (status ' + res.status + ')');
-          throw new Error(msg);
-        });
-      });
-    }
+    var lines = ['*New inquiry — fiscal-edge.org*', ''];
+    lines.push('Name: ' + data.name);
+    if (data.company) lines.push('Company: ' + data.company);
+    lines.push('Email: ' + data.email);
+    if (data.phone) lines.push('Phone: ' + data.phone);
+    lines.push('Service: ' + data.service);
+    lines.push('');
+    lines.push(data.message);
 
-    /* No backend configured yet: prepare a pre-filled WhatsApp message and
-       show an email fallback link instead of hijacking the visitor's tab. */
-    var whatsapp = form.getAttribute('data-whatsapp') || '';
-    var subject = encodeURIComponent('Inquiry via fiscal-edge.org — ' + data.name);
-    var bodyLines = [
-      'New inquiry from the Fiscal Edge website:',
-      '',
-      'Name: ' + data.name,
-      data.company ? 'Company: ' + data.company : '',
-      'Email: ' + data.email,
-      data.phone ? 'Phone: ' + data.phone : '',
-      'Service of interest: ' + data.service,
-      '',
-      data.message
-    ];
-    var body = encodeURIComponent(bodyLines.filter(function (l) { return l !== ''; }).join('\n'));
+    var body = encodeURIComponent(lines.join('\n'));
     var waUrl = 'https://wa.me/' + whatsapp + '?text=' + body;
-    var mailUrl = 'mailto:contact@fiscal-edge.org?subject=' + subject + '&body=' + body;
+    var mailUrl = 'mailto:info@fiscal-edge.org?subject=' +
+      encodeURIComponent('Inquiry via fiscal-edge.org — ' + data.name) +
+      '&body=' + body;
 
-    window.open(waUrl, '_blank', 'noopener');
-    return Promise.resolve({ ok: true, fallback: true, mailUrl: mailUrl });
+    // A null window means the browser refused to open the hand-off tab, which
+    // is what iOS Safari does when the call is not a direct user gesture.
+    if (!window.open(waUrl, '_blank', 'noopener')) {
+      return Promise.reject(new Error(t('The browser blocked the WhatsApp window.')));
+    }
+
+    return Promise.resolve({ ok: true, mailUrl: mailUrl });
   }
 
   function initContactForm() {
@@ -128,7 +124,7 @@
       if (show) {
         field.setAttribute('aria-invalid', 'true');
         var err = group.querySelector('.field-error');
-        if (err) err.textContent = field.dataset.error || 'Please complete this field.';
+        if (err) err.textContent = field.dataset.error || t('Please complete this field.');
       } else {
         field.removeAttribute('aria-invalid');
       }
@@ -161,7 +157,7 @@
       if (!validate()) {
         if (messages) {
           messages.className = 'form-messages error';
-          messages.textContent = 'Please review the highlighted fields and try again.';
+          messages.textContent = t('Please review the highlighted fields and try again.');
         }
         return;
       }
@@ -177,28 +173,24 @@
 
       var btn = form.querySelector('[type="submit"]');
       var btnText = btn ? btn.textContent : '';
-      if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+      if (btn) { btn.disabled = true; btn.textContent = t('Opening WhatsApp…'); }
 
       postForm(form, data).then(function (res) {
         clearErrors();
         form.reset();
         if (messages) {
           messages.className = 'form-messages success';
-          if (res.fallback) {
-            messages.innerHTML = '<strong>Thank you, ' + escapeHtml(data.name.split(' ')[0]) + '.</strong> ' +
-              'Your inquiry has been prepared — a WhatsApp message should open. ' +
-              'If it didn\u2019t, email us directly at ' +
-              '<a href="' + res.mailUrl + '">contact@fiscal-edge.org</a>.';
-          } else {
-            messages.innerHTML = '<strong>Thank you, ' + escapeHtml(data.name.split(' ')[0]) + '.</strong> ' +
-              'Your inquiry has been sent — we will get back to you as soon as possible.';
-          }
+          messages.innerHTML = '<strong>' + t('Thank you,') + ' ' + escapeHtml(data.name.split(' ')[0]) + '.</strong> ' +
+            t('Your message is ready — WhatsApp should open in a new tab.') + ' ' +
+            t('If it didn’t open, email us directly at') + ' ' +
+            '<a href="' + res.mailUrl + '">info@fiscal-edge.org</a>.';
         }
       }).catch(function (err) {
         if (messages) {
           messages.className = 'form-messages error';
-          messages.textContent = 'Sorry, we couldn\u2019t send your message: ' + err.message +
-            '. Please email us directly at contact@fiscal-edge.org.';
+          messages.innerHTML = '<strong>' + escapeHtml(err.message) + '</strong> ' +
+            t('Please email us directly at') + ' ' +
+            '<a href="mailto:info@fiscal-edge.org">info@fiscal-edge.org</a>.';
         }
       }).finally(function () {
         if (btn) { btn.disabled = false; btn.textContent = btnText; }
@@ -253,6 +245,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     initAnchorScroll();
     initYear();
+    initWhatsAppFab();
     initContactForm();
     initReducedMotion();
     initPreloaderCounter();

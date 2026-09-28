@@ -1360,39 +1360,60 @@
       });
     },
     splitText: function (e) {
-      if ($('.rts-text-anime-style-1').length) {
-        let animatedTextElements = document.querySelectorAll('.rts-text-anime-style-1');
+      // Arabic is a connected script: splitting it into one <div> per letter
+      // breaks the cursive joins and reverses the visual order, so the
+      // per-character heading animation is English-only. In Arabic the
+      // headings simply render as normal text, one word at a time.
+      if (document.documentElement.getAttribute('dir') === 'rtl') return;
+      if (!$('.rts-text-anime-style-1').length) return;
 
-        animatedTextElements.forEach((element) => {
-          //Reset if needed
-          if (element.animation) {
-            element.animation.progress(1).kill();
-            element.split.revert();
-          }
+      let animatedTextElements = document.querySelectorAll('.rts-text-anime-style-1');
 
-          element.split = new SplitText(element, {
-            type: "lines,words,chars",
-            linesClass: "split-line",
-          });
-          gsap.set(element, { perspective: 400 });
+      animatedTextElements.forEach((element) => {
+        //Reset if needed
+        if (element.animation) {
+          element.animation.progress(1).kill();
+          element.split.revert();
+        }
 
-          gsap.set(element.split.chars, {
-            opacity: 0,
-            x: "50",
-          });
-
-          element.animation = gsap.to(element.split.chars, {
-            scrollTrigger: { trigger: element, start: "top 95%" },
-            x: "0",
-            y: "0",
-            rotateX: "0",
-            opacity: 1,
-            duration: 1,
-            ease: Back.easeOut,
-            stagger: 0.02,
-          });
+        element.split = new SplitText(element, {
+          type: "lines,words,chars",
+          linesClass: "split-line",
         });
-      }
+        gsap.set(element, { perspective: 400 });
+
+        gsap.set(element.split.chars, {
+          opacity: 0,
+          x: "50",
+        });
+
+        element.animation = gsap.to(element.split.chars, {
+          scrollTrigger: { trigger: element, start: "top 95%" },
+          x: "0",
+          y: "0",
+          rotateX: "0",
+          opacity: 1,
+          duration: 1,
+          ease: Back.easeOut,
+          stagger: 0.02,
+        });
+      });
+    },
+    // Restore the original heading markup. i18n.js fires `fpe:beforetranslate`
+    // before it swaps any text, so the animation never sees a translated
+    // letter box; `fpe:languagechange` then lets it start again in English.
+    unsplitText: function (e) {
+      document.querySelectorAll('.rts-text-anime-style-1').forEach((element) => {
+        if (element.animation) {
+          element.animation.progress(1).kill();
+          element.animation = null;
+        }
+        if (element.split) {
+          element.split.revert();
+          element.split = null;
+        }
+        element.style.perspective = '';
+      });
     },
     backToTopInit: function () {
       $(document).ready(function () {
@@ -1580,6 +1601,17 @@
   }
 
   rtsJs.m();
+
+  // Language toggle (assets/js/i18n.js) and the heading animation have to
+  // take turns: un-split before any text is swapped, re-split once the
+  // English text is back in place.
+  document.addEventListener('fpe:beforetranslate', function () {
+    rtsJs.unsplitText();
+  });
+  document.addEventListener('fpe:languagechange', function (event) {
+    if (!event.detail || event.detail.lang !== 'en') return;
+    rtsJs.splitText();
+  });
 })(jQuery, window)
 
 
