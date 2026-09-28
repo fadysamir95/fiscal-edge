@@ -404,8 +404,8 @@ select:focus-visible,
   height: 100%;
   object-fit: cover;
 }
-/* Icon SVGs in the source folder vary in size (68px and 28-37px);
-   render them all at one consistent size, centered. */
+/* The service icons are a hand-drawn set on one shared 68x68 grid; this
+   keeps them from drifting apart again. */
 .rts-service-main-wrapper-10 .signle-service-style-10 .content-area-wrapper .icon img {
   width: 68px;
   height: 68px;
@@ -515,13 +515,64 @@ select:focus-visible,
   }
 }
 
-/* --- Mega menu service icons: source SVGs vary in size (68px vs
-   28-37px); the template only caps the width, so give them a uniform
-   box for a consistent row. --- */
+/* --- Mega menu service icons: the template only caps the width, so give
+   them a uniform square box for a consistent row. --- */
 .rts-mega-menu.service-mega-menu-style li a .single-service-menu .icon img {
   width: 40px;
   height: 40px;
   object-fit: contain;
+}
+
+/* --- Training & Business Development Consulting: the detail block that sits
+   between the service grid and the process section. It is the one service
+   with a full breakdown, so it gets its own section rather than a longer
+   card that would break the grid's rhythm. --- */
+.fpe-training-detail-area .title-style-one .title {
+  margin-bottom: 20px;
+}
+.fpe-training-detail-note {
+  color: #5D666F;
+}
+.fpe-training-detail-note + .fpe-training-detail-note {
+  margin-top: 16px;
+}
+.fpe-training-detail-lead {
+  color: #103D67;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.fpe-training-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.fpe-training-list li {
+  position: relative;
+  margin-bottom: 20px;
+  padding-left: 26px;
+}
+.fpe-training-list li:last-child {
+  margin-bottom: 0;
+}
+.fpe-training-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #103D67;
+}
+.fpe-training-item-title {
+  display: block;
+  color: #103D67;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.fpe-training-item-text {
+  display: block;
+  color: #5D666F;
 }
 
 /* --- Legal pages: reading-friendly content columns --- */

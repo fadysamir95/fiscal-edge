@@ -209,3 +209,17 @@ html[lang="ar"] .ml_sm--5 {
     font-size: 14px;
   }
 }
+
+/* --- Training service detail list -------------------------------------------
+   Its marker hangs off the left edge, so in Arabic it moves to the right
+   with the rest of the text. --- */
+
+html[lang="ar"] .fpe-training-list li {
+  padding-left: 0;
+  padding-right: 26px;
+}
+
+html[lang="ar"] .fpe-training-list li::before {
+  left: auto;
+  right: 0;
+}
