@@ -80,11 +80,36 @@
   /* --- Contact form ---
      There is no server behind this form. The visit is handed straight to
      WhatsApp with their answers pre-filled, and the email link in the
-     confirmation is the fallback for browsers that block the hand-off. */
+     confirmation stays available as a fallback. */
+
+  /* The hand-off is made by clicking a real link rather than by calling
+     window.open(). window.open() returns null whenever "noopener" appears in
+     the features string -- the HTML standard says so outright, and every
+     browser follows it -- so testing that return value cannot detect a popup
+     block and instead reported every successful hand-off as one. A link is
+     also what iOS Safari wants here: it only follows the tab opened by the
+     very gesture that submitted the form. */
+  function openHandOff(url) {
+    var a = document.createElement('a');
+    a.href = url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.hidden = true;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+
   function postForm(form, data) {
     var whatsapp = (form.getAttribute('data-whatsapp') || '').replace(/\D/g, '');
     if (!whatsapp) {
-      return Promise.reject(new Error(t('WhatsApp is not configured for this form.')));
+      // t() is what keeps the key in the dictionary; the English text rides
+      // along on the error as well, so render() can translate it afresh each
+      // time the message is shown. Without that, a visitor who switches
+      // language after the failure keeps reading the old language.
+      var err = new Error(t('WhatsApp is not configured for this form.'));
+      err.key = 'WhatsApp is not configured for this form.';
+      return Promise.reject(err);
     }
 
     var lines = ['*New inquiry — fiscal-edge.org*', ''];
@@ -102,11 +127,9 @@
       encodeURIComponent('Inquiry via fiscal-edge.org — ' + data.name) +
       '&body=' + body;
 
-    // A null window means the browser refused to open the hand-off tab, which
-    // is what iOS Safari does when the call is not a direct user gesture.
-    if (!window.open(waUrl, '_blank', 'noopener')) {
-      return Promise.reject(new Error(t('The browser blocked the WhatsApp window.')));
-    }
+    // No popup-blocked branch here: with no way to observe the new tab, any
+    // complaint about it would be a guess, and a wrong one.
+    openHandOff(waUrl);
 
     return Promise.resolve({ ok: true, mailUrl: mailUrl });
   }
@@ -116,6 +139,35 @@
     if (!form) return;
 
     var messages = document.getElementById('form-messages');
+    var lastMessage = null;
+
+    /* The message is assembled by script rather than translated from markup,
+       so it has to be rebuilt by hand whenever the language changes. Keeping
+       the last one means a visitor who submits in English and then switches to
+       Arabic does not sit looking at a stale English confirmation. */
+    function render(data, mailUrl, err) {
+      lastMessage = { data: data, mailUrl: mailUrl, err: err };
+      if (!messages) return;
+      if (err) {
+        // err.key is the English, so this re-translates on a language switch
+        // instead of leaving the old language on screen.
+        var reason = err.key ? t(err.key) : err.message;
+        messages.className = 'form-messages error';
+        messages.innerHTML = '<strong>' + escapeHtml(reason) + '</strong> ' +
+          t('Please email us directly at') + ' ' +
+          '<a href="mailto:info@fiscal-edge.org">info@fiscal-edge.org</a>.';
+        return;
+      }
+      messages.className = 'form-messages success';
+      messages.innerHTML = '<strong>' + t('Thank you,') + ' ' + escapeHtml(data.name.split(' ')[0]) + '.</strong> ' +
+        t('Your message is ready — WhatsApp should open in a new tab.') + ' ' +
+        t('Prefer email?') + ' ' +
+        '<a href="' + mailUrl + '">info@fiscal-edge.org</a>.';
+    }
+
+    document.addEventListener('fpe:languagechange', function () {
+      if (lastMessage) render(lastMessage.data, lastMessage.mailUrl, lastMessage.err);
+    });
 
     function setError(field, show) {
       var group = field.closest('.form-group');
@@ -178,20 +230,9 @@
       postForm(form, data).then(function (res) {
         clearErrors();
         form.reset();
-        if (messages) {
-          messages.className = 'form-messages success';
-          messages.innerHTML = '<strong>' + t('Thank you,') + ' ' + escapeHtml(data.name.split(' ')[0]) + '.</strong> ' +
-            t('Your message is ready — WhatsApp should open in a new tab.') + ' ' +
-            t('If it didn’t open, email us directly at') + ' ' +
-            '<a href="' + res.mailUrl + '">info@fiscal-edge.org</a>.';
-        }
+        render(data, res.mailUrl, null);
       }).catch(function (err) {
-        if (messages) {
-          messages.className = 'form-messages error';
-          messages.innerHTML = '<strong>' + escapeHtml(err.message) + '</strong> ' +
-            t('Please email us directly at') + ' ' +
-            '<a href="mailto:info@fiscal-edge.org">info@fiscal-edge.org</a>.';
-        }
+        render(data, null, err);
       }).finally(function () {
         if (btn) { btn.disabled = false; btn.textContent = btnText; }
       });
