@@ -121,6 +121,26 @@ html[lang="ar"] .rts-mega-menu.service-mega-menu-style li a .single-service-menu
   margin-left: 15px;
 }
 
+/* --- Contact page columns --------------------------------------------------
+   The contact page is an information column beside a form column. The
+   information column is first in the markup, so English puts the phone and
+   email on the left and the form on the right. `dir="rtl"` starts a flex row
+   from the right, which moves the details to the right and the form to the
+   left, so the page stops matching the rest of the site. Reversing the row
+   puts it back the way English has it.
+
+   `flex-direction` rather than `order`, because it needs no media query: at
+   narrow widths both columns are full width and the row wraps, and the
+   stacking order still follows the markup, so the reading order is left
+   alone. Only the outermost row is targeted -- the form's own field rows are
+   nested inside it and must keep their right-to-left order.
+
+   The row is not given `direction: ltr`, so the Arabic inside each column
+   still runs right-to-left. */
+html[lang="ar"] .rts-contact-area-in-page > .container > .row {
+  flex-direction: row-reverse;
+}
+
 /* --- Language switcher ----------------------------------------------------
    The template parks a vertical gradient pill on the right edge of the
    viewport. It now sits inline in the header, right beside the primary
