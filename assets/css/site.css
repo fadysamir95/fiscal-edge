@@ -527,34 +527,34 @@ select:focus-visible,
    between the service grid and the process section. It is the one service
    with a full breakdown, so it gets its own section rather than a longer
    card that would break the grid's rhythm. --- */
-.fpe-training-detail-area .title-style-one .title {
+.fpe-detail-area .title-style-one .title {
   margin-bottom: 20px;
 }
-.fpe-training-detail-note {
+.fpe-detail-note {
   color: #5D666F;
 }
-.fpe-training-detail-note + .fpe-training-detail-note {
+.fpe-detail-note + .fpe-detail-note {
   margin-top: 16px;
 }
-.fpe-training-detail-lead {
+.fpe-detail-lead {
   color: #103D67;
   font-weight: 700;
   margin-bottom: 20px;
 }
-.fpe-training-list {
+.fpe-detail-list {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.fpe-training-list li {
+.fpe-detail-list li {
   position: relative;
   margin-bottom: 20px;
   padding-left: 26px;
 }
-.fpe-training-list li:last-child {
+.fpe-detail-list li:last-child {
   margin-bottom: 0;
 }
-.fpe-training-list li::before {
+.fpe-detail-list li::before {
   content: "";
   position: absolute;
   left: 0;
@@ -564,13 +564,13 @@ select:focus-visible,
   border-radius: 50%;
   background: #103D67;
 }
-.fpe-training-item-title {
+.fpe-detail-item-title {
   display: block;
   color: #103D67;
   font-weight: 700;
   margin-bottom: 4px;
 }
-.fpe-training-item-text {
+.fpe-detail-item-text {
   display: block;
   color: #5D666F;
 }

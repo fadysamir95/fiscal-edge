@@ -210,16 +210,17 @@ html[lang="ar"] .ml_sm--5 {
   }
 }
 
-/* --- Training service detail list -------------------------------------------
-   Its marker hangs off the left edge, so in Arabic it moves to the right
-   with the rest of the text. --- */
+/* --- Service detail list ----------------------------------------------------
+   Used by the Training detail section on services.html and by the independent
+   academic-research section. Its marker hangs off the left edge, so in Arabic it
+   moves to the right with the rest of the text. --- */
 
-html[lang="ar"] .fpe-training-list li {
+html[lang="ar"] .fpe-detail-list li {
   padding-left: 0;
   padding-right: 26px;
 }
 
-html[lang="ar"] .fpe-training-list li::before {
+html[lang="ar"] .fpe-detail-list li::before {
   left: auto;
   right: 0;
 }
