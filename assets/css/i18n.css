@@ -58,11 +58,25 @@ html[lang="ar"] .rts-btn {
 
 /* --- Latin values that must stay left-to-right ----------------------------
    A phone number inside an RTL paragraph is reordered by the bidi algorithm
-   and reads as "1271360003+20". Isolating each run keeps it intact. */
+   and reads as "1271360003+20". Isolating each run keeps it intact.
+
+   The maps link is here for a different reason than the other two. Its own
+   text is Arabic, so there is no Latin value to rescue; it is here so the
+   location card matches the phone and email cards, which are already isolated
+   and so lay their icon on the left in Arabic. Without it the location card is
+   the odd one out, with its icon on the right.
+
+   Side effect worth knowing: direction:ltr also makes text-align start resolve
+   to the left, so the Arabic in that card aligns left as well.
+
+   This sheet carries no Arabic characters on purpose. The English source text is
+   what gets searched for across the project, and keeping i18n.css Latin-only
+   makes that unambiguous -- so refer to the Arabic labels, do not quote them. */
 
 html[lang="ar"] a[href^="tel:"],
 html[lang="ar"] a[href^="mailto:"],
 html[lang="ar"] a[href*="fiscal-edge.org"],
+html[lang="ar"] a[href*="google.com/maps"],
 html[lang="ar"] .fpe-loader-percent,
 html[lang="ar"] #year {
   direction: ltr;
