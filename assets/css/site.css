@@ -523,23 +523,6 @@ select:focus-visible,
   object-fit: contain;
 }
 
-/* --- Mega menu service rows: let a long title wrap instead of squeezing.
-   The template gives .single-service-menu `display: flex; align-items:
-   flex-start` and no flex-wrap, so .info cannot shrink below its widest
-   single word and a long service name spills out of its card. Wrapping the
-   row breaks it onto a second line instead.
-
-   The selector is the template's own, so the specificity is identical and
-   this sheet wins only by loading later. `display: flex` is restated
-   deliberately: it matches the template today, and saying it here keeps the
-   row a flex row if the template is ever retuned. No language guard --
-   wrapping is direction-neutral, and Arabic only swaps which side the icon
-   and its 15px gap sit on. */
-.rts-mega-menu.service-mega-menu-style li a .single-service-menu {
-  display: flex;
-  flex-wrap: wrap;
-}
-
 /* --- Training & Business Development Consulting: the detail block that sits
    between the service grid and the process section. It is the one service
    with a full breakdown, so it gets its own section rather than a longer
