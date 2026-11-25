@@ -1068,3 +1068,72 @@ select:focus-visible,
     left: 16px;
   }
 }
+
+/* --- Athar initiative card (Training & Business Development detail) ---
+   Poster on one side, summary + PDF actions on the other. Stacks on mobile. --- */
+.fpe-athar {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 40px;
+  align-items: center;
+  margin-top: 60px;
+  padding: 32px;
+  border: 1px solid #E3E8EE;
+  border-radius: 20px;
+  background: #F5F8FB;
+}
+.fpe-athar-poster {
+  display: block;
+  border-radius: 16px;
+  overflow: hidden;
+  line-height: 0;
+}
+.fpe-athar-poster img {
+  width: 100%;
+  height: auto;
+  transition: transform .3s ease;
+}
+.fpe-athar-poster:hover img {
+  transform: scale(1.03);
+}
+.fpe-athar-pre {
+  display: block;
+  color: #5D666F;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.fpe-athar-title {
+  color: #103D67;
+  margin-bottom: 8px;
+}
+.fpe-athar-tagline {
+  color: #5D666F;
+  margin-bottom: 20px;
+}
+.fpe-athar-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 32px;
+  list-style: none;
+  margin: 0 0 28px;
+  padding: 0;
+  color: #5D666F;
+}
+.fpe-athar-stats strong {
+  color: #103D67;
+  font-size: 24px;
+  margin-right: 4px;
+}
+.fpe-athar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+@media (max-width: 991px) {
+  .fpe-athar {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 20px;
+    margin-top: 40px;
+  }
+}

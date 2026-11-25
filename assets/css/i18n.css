@@ -271,3 +271,8 @@ html[lang="ar"] .fpe-detail-list li::before {
   left: auto;
   right: 0;
 }
+
+html[lang="ar"] .fpe-athar-stats strong {
+  margin-right: 0;
+  margin-left: 4px;
+}

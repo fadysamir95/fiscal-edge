@@ -17,6 +17,15 @@
    ========================================================================== */
 
 window.FPE_AR = {
+  "Athar Initiative": "مبادرة أثر",
+  "Data Analytics Diploma": "دبلومة تحليل البيانات",
+  "Athar – How do numbers tell their story?": "أثر – كيف تحكي الأرقام قصتها؟",
+  "Integrated courses": "كورسات متكاملة",
+  "Training hours": "ساعة تدريبية",
+  "Applied project": "مشروع تطبيقي",
+  "View PDF": "عرض الملف",
+  "Download PDF": "تحميل الملف",
+  "Open the Athar Data Analytics Diploma poster (PDF)": "افتح بوستر دبلومة تحليل البيانات من أثر (PDF)",
   ") and describe the basis on which our professional services may be engaged. By using this website, you agree to these Terms.": "وتوضيح الأساس الذي يمكن التعاقد على خدماتنا المهنية على أساسه. وباستخدامك لهذا الموقع فإنك توافق على هذه الشروط.",
   "). We are committed to handling your information responsibly and in line with applicable professional and legal requirements.": "). نحن ملتزمون بالتعامل مع معلوماتك بمسؤولية ووفق المتطلبات المهنية والقانونية المعمول بها.",
   "01. What services do you provide?": "01. ما الخدمات التي تقدمونها؟",
